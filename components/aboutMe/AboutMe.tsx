@@ -1,27 +1,12 @@
-import Portrait from "./Portrait";
-import * as S from "./Style"
-import Image from "next/image";
+import Description from "./Description";
+import Apresentation from "./Apresentation";
 
 export const AboutMe = () => {
     return (
-        <S.Container>
-            <S.Description>
-                <div>
-                    Hi, I am<br></br> 
-                    Lucas Ribeiro Lima
-                </div>
-                <span>Frontend Developer</span>
-                <div>
-                    <S.Button $primary>
-                        Download CV
-                    </S.Button>
-                    <S.Button>
-                        Learn More
-                    </S.Button>
-                </div>                
-            </S.Description>
-            <Portrait></Portrait>
-        </S.Container>
+        <div>
+            <Apresentation></Apresentation>
+            <Description></Description>
+        </div>
     )
 };
   
