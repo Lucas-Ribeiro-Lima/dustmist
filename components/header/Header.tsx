@@ -1,9 +1,10 @@
+import { MainTitle } from '@/styles/Styles';
 import * as S from './Style'
 
 const Header = () => {
     return (
         <S.Container>
-            <S.Title>Lucas Lima</S.Title>
+            <MainTitle>Lucas Lima</MainTitle>
             <S.Navbar>
                 <ul>
                     <li>

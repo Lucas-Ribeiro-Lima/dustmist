@@ -1,12 +1,31 @@
-import Description from "./Description";
-import Apresentation from "./Apresentation";
+import { Button, PrimaryTitle, SubTitle } from "@/styles/Styles";
+import * as S from "./AboutMeStyle"
+import Image from "next/image";
 
 export const AboutMe = () => {
     return (
-        <div>
-            <Apresentation></Apresentation>
-            <Description></Description>
-        </div>
+        <S.Container>
+            <div>
+                <PrimaryTitle>
+                    Hi, I am<br></br> 
+                    Lucas Ribeiro Lima
+                </PrimaryTitle>
+                <SubTitle>Frontend Developer</SubTitle>
+                <div>
+                    <Button $primary>
+                        Download CV
+                    </Button>
+                    <Button>
+                        Learn More
+                    </Button>
+                </div>                
+            </div>
+            <S.PortraitElipse $elipse1>
+                <S.PortraitElipse $elipse2>
+                    <Image src="/perfil-image3.jpg" width={375} height={650} alt="Imagem do proprietário"></Image>
+                </S.PortraitElipse>
+            </S.PortraitElipse>
+        </S.Container>
     )
 };
   

@@ -11,13 +11,6 @@ export const Container = styled.div`
     margin-top: 28px;
 `
 
-export const Title = styled.h1`
-    width: 212px;
-    height: 47px;
-    font-size: 36px;
-    font-weight: 700;
-`;
-
 export const Navbar = styled.div`
     ul {
         display: flex;

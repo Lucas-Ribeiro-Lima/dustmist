@@ -1,13 +1,13 @@
-import * as S from './Style'
-
+import {Container} from "@/styles/Styles"
+import * as S from "./FooterStyle"
 
 const Footer = () => {
     return (
-        <S.Container>
-            <footer>
+        <Container>
+            <S.Div1>
                 @Lucas.Lima 2024
-            </footer>
-        </S.Container>
+            </S.Div1>
+        </Container>
     );
 }
 
