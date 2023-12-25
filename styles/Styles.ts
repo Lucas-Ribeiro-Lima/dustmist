@@ -16,9 +16,10 @@ export const MainTitle = styled.h1`
     font-weight: 700;
 `
 
-export const PrimaryTitle = styled.h1`
+export const PrimaryTitle = styled.h1<{$marginBottom?:number}>`
     font-size: 48px;
     font-weight: 700;
+    margin-bottom: ${props => props.$marginBottom}px;
 `
 
 export const SecondaryTitle = styled.h2`
@@ -27,12 +28,12 @@ export const SecondaryTitle = styled.h2`
 `
 
 export const SubTitle = styled.div`
+    margin-bottom: 47px;
     color: #828282;
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
 `;
-
 
 export const Button = styled.button<{ $primary?:boolean }>`
     width: 143px;
@@ -61,10 +62,12 @@ export const Form = styled.form`
 
 export const Input = styled.input<{$messagebox?:boolean}>`
     width: 358px;
+    margin: 20px;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #4f4f4f;
     height: max-content;
+    color: #FFFF;
     ${props => 
         props.$messagebox && css`
             border: 1px solid #4f4f4f;
@@ -72,4 +75,5 @@ export const Input = styled.input<{$messagebox?:boolean}>`
             height: 109px;
         `
     }
+}
 `
