@@ -6,7 +6,7 @@ export const AboutMe = () => {
     return (
         <S.Container>
             <div>
-                <PrimaryTitle>
+                <PrimaryTitle $marginBottom={0}>
                     Hi, I am<br></br> 
                     Lucas Ribeiro Lima
                 </PrimaryTitle>
