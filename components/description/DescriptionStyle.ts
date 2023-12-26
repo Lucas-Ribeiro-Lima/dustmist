@@ -28,5 +28,5 @@ export const DescriptionContainer = styled.div`
     a{
         color: #FFFF;
         text-decoration: none;
-    }
+    }  
 `

@@ -10,12 +10,17 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         line-height: normal;
         font-size: 18px;
+
     }
 `
 
 export const GlobalContainer = styled.div`
     display: flex;
     justify-content: center;
+    ::selection{
+        background-color: #27AE60;
+        color: #FFFF;
+    }  
 `
 
 export const Layout = styled.div`
@@ -93,27 +98,39 @@ export const Form = styled.form`
     align-items: center;
     gap: 20px;
     width: 753px;
-    height: 330px;
-    color: #4f4f4f;
+    height: 425px;
+    ::placeholder{
+        color: #4f4f4f;
+        font-family: 'DM Sans', sans-serif;
+    };
 `
 
-export const Input = styled.input<{$messagebox?:boolean}>`
+export const Input = styled.input`
     width: 358px;
     margin: 20px;
+    margin-bottom: 0px;
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #4f4f4f;
     height: max-content;
     color: #FFFF;
-    ${props => 
-        props.$messagebox && css`
-            border: 1px solid #4f4f4f;
-            width: 750px;
-            height: 109px;
-        `
-    }
+
 `
+
+export const TextArea = styled.textarea`
+    background-color: transparent;
+    color: #FFFF;
+    margin: 20px;
+    margin-bottom: 0px;
+    border: 1px solid #4f4f4f;
+    width: 750px;
+    height: 109px;
+    overflow-wrap: break-word;
+    resize: none;
+`
+
 export const SpanError = styled.span`
+    align-self: self-start;
     margin-left: 20px;
     font-size: 12px;
     color: red;

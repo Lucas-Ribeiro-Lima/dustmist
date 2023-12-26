@@ -28,6 +28,7 @@ export const Competencie = styled.div`
         flex-grow: 1;
     }
     span {
+        /* display: none; */
         width: inherit;
         height: 5px;
         background: #27AE60;
