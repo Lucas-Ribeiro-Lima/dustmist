@@ -81,6 +81,10 @@ export const Button = styled.button<{ $primary?:boolean }>`
         border: none;
         `
     }
+    a{
+        text-decoration: none;
+        color: #FFFF;
+    }
 `
 
 export const Form = styled.form`

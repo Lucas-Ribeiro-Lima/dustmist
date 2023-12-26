@@ -1,6 +1,7 @@
 import { Button, PrimaryTitle, SubTitle } from "@/styles/global-styles";
 import { AboutMeContainer, PortraitElipse } from "./AboutMeStyle";
 import Image from "next/image";
+import Link from "next/link";
 
 export const AboutMe = () => {
     return (
@@ -13,10 +14,10 @@ export const AboutMe = () => {
                 <SubTitle>Frontend Developer</SubTitle>
                 <div>
                     <Button $primary>
-                        Download CV
+                        <a href='/LucasCV.pdf' download='/LucasCV.pdf'>Download CV</a>
                     </Button>
                     <Button>
-                        Learn More
+                        <Link href="/#">Learn More</Link>
                     </Button>
                 </div>                
             </div>
