@@ -15,18 +15,22 @@ export const Competencie = styled.div`
     gap: 29.67px;
     width: 350px;
     height: 241px;
-    padding-left: 50px;
-    padding-top: 34.86px;
     background-color: #212121;
     font-size: 36px;
     font-weight: 500;
     color: #535353;
-    :hover {
-        span{
-            background-color: #fff;
-            width: 100px;
-            height: 100px;
-        }
+    img {
+        padding-left: 50px;
+        padding-top: 34px;
+    }
+    div {
+        padding-left: 50px;
+        flex-grow: 1;
+    }
+    span {
+        width: inherit;
+        height: 5px;
+        background: #27AE60;
     }
 `
 

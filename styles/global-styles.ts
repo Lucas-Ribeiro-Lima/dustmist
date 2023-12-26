@@ -74,6 +74,7 @@ export const Button = styled.button<{ $primary?:boolean }>`
     color: #FFFF;
     border: 1px solid #f2f2f2;
     background: #171717;
+    cursor: pointer;
     ${props =>
         props.$primary && css`
         background: #27AE60;

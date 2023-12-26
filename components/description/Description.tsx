@@ -47,7 +47,7 @@ const Description = () => {
                                 Phone
                             </div>
                             <div>
-                                (31) 984961251
+                                (31) 98496-1351
                             </div>
                         </li>
                     </ul>
