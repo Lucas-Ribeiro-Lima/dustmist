@@ -99,10 +99,6 @@ export const Form = styled.form`
     gap: 20px;
     width: 753px;
     height: 425px;
-    ::placeholder{
-        color: #4f4f4f;
-        font-family: 'DM Sans', sans-serif;
-    };
 `
 
 export const Input = styled.input`
@@ -118,6 +114,7 @@ export const Input = styled.input`
 `
 
 export const TextArea = styled.textarea`
+    font-family: 'DM Sans', sans-serif;
     background-color: transparent;
     color: #FFFF;
     margin: 20px;

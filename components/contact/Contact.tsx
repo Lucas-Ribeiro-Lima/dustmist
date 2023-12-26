@@ -19,8 +19,8 @@ const ContactFormSchema = z.object(
 )
 
 async function handleForm ({name, last_name, email, phone, message}: ContactFormData) {
-    // axios.post("/api/contact", {name, last_name, email, phone, message})
-    console.log({name, last_name, email, phone, message})
+    axios.post("/api/contact", {name, last_name, email, phone, message})
+    // console.log({name, last_name, email, phone, message})
 }
 
 export const Contact = () => {
