@@ -3,13 +3,13 @@
 import styled from "styled-components"
 
 
-export const Div1 = styled.div`
+export const CompentenciesContainer = styled.div`
     display: flex;
     flex-direction: row;
     gap: 60px;
 `
 
-export const Div2 = styled.div`
+export const Competencie = styled.div`
     display: flex;
     flex-direction: column;
     gap: 29.67px;
@@ -21,14 +21,16 @@ export const Div2 = styled.div`
     font-size: 36px;
     font-weight: 500;
     color: #535353;
+    :hover {
+        span{
+            background-color: #fff;
+            width: 100px;
+            height: 100px;
+        }
+    }
 `
 
-export const Div3 = styled.div`
-    display: flex;
-    flex-direction: column;
-`
-
-export const Skills = styled.div`
+export const SkillsContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -51,4 +53,8 @@ export const Skills = styled.div`
             font-weight: 700;
         }
     }
+`
+export const Skills = styled.div`
+    display: flex;
+    flex-direction: column;
 `

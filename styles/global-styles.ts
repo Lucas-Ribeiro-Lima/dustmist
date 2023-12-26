@@ -1,12 +1,44 @@
 'use client'
 
-import styled, {css} from "styled-components"
+import styled, {css, createGlobalStyle} from "styled-components"
 
-export const Container = styled.div<{$messagebox?:boolean}>`
+export const GlobalStyle = createGlobalStyle`
+    body {
+        background-color: #333;
+        color: #fff;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 400;
+        line-height: normal;
+        font-size: 18px;
+    }
+`
+
+export const GlobalContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
+export const Layout = styled.div`
+    display: flex;
+    gap: 40px;
+    width: 1440px;
+    height: 100%;
+    background-color: #171717;
+    flex-direction: column;
+    border-radius: 20px;
+`;
+
+export const Container = styled.div<{$flexRowContainer?:boolean}>`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    ${props => props.$flexRowContainer && 
+        css`
+            flex-direction: row; 
+            gap: 0px; 
+            align-items: start;
+        `}
 `
 
 export const MainTitle = styled.h1`
@@ -75,4 +107,9 @@ export const Input = styled.input<{$messagebox?:boolean}>`
             height: 109px;
         `
     }
+`
+export const SpanError = styled.span`
+    margin-left: 20px;
+    font-size: 12px;
+    color: red;
 `

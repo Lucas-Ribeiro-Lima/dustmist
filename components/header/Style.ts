@@ -2,7 +2,7 @@
 
 import styled from "styled-components"
 
-export const Container = styled.div`
+export const HeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,5 +19,9 @@ export const Navbar = styled.div`
         flex-direction: row;
         gap: 40px;
         list-style: none;
+    }
+    a {
+        color: #fffF;
+        text-decoration: none;
     }
 `;

@@ -2,7 +2,7 @@
 
 import styled from "styled-components"
 
-export const Container = styled.div`
+export const DescriptionContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;

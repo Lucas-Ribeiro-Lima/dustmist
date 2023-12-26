@@ -1,11 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
-import * as S from "./DescriptionStyle"
-import { SecondaryTitle } from "@/styles/Styles"
+import { DescriptionContainer } from "./DescriptionStyle"
+import { SecondaryTitle } from "@/styles/global-styles"
 
 const Description = () => {
     return (
-        <S.Container>
+        <DescriptionContainer>
                 <SecondaryTitle>About</SecondaryTitle>
                 <main>
                     I am a software engineering student, actively engaged in developing personal projects to enhance my skills and gain practical experience. Since childhood, I have harbored a passion for technology and consistently demonstrated a natural ability to grasp its concepts effortlessly. This inherent affinity propels me to constantly seek challenges and refine my knowledge in the field.
@@ -52,7 +52,7 @@ const Description = () => {
                         </li>
                     </ul>
                 </div>
-        </S.Container>
+        </DescriptionContainer>
     )
 }
 

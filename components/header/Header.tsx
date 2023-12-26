@@ -1,24 +1,25 @@
-import { MainTitle } from '@/styles/Styles';
-import * as S from './Style'
+import { MainTitle } from '@/styles/global-styles';
+import { HeaderContainer, Navbar } from './Style';
+import Link from 'next/link';
 
 const Header = () => {
     return (
-        <S.Container>
+        <HeaderContainer>
             <MainTitle>Lucas Lima</MainTitle>
-            <S.Navbar>
+            <Navbar>
                 <ul>
                     <li>
-                        About Me
+                        <Link href="/#AboutMe">About Me</Link>
                     </li>
                     <li>
-                        Services
+                        <Link href="/#Competencies">Services</Link>
                     </li>
                     <li>
-                        Contact Me
+                        <Link href="/#Contact">Contact Me</Link>
                     </li>
                 </ul>
-            </S.Navbar>
-        </S.Container>
+            </Navbar>
+        </HeaderContainer>
     )
 }
 

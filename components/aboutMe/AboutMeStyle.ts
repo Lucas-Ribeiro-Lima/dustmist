@@ -2,7 +2,7 @@
 
 import styled, {css} from "styled-components"
 
-export const Container = styled.div`
+export const AboutMeContainer = styled.div`
     display: flex;
     align-items: center;
     position: relative;

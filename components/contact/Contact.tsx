@@ -1,10 +1,10 @@
 'use client'
 
-import {Button, SecondaryTitle, Container, Form, Input} from '@/styles/Styles'
+import {Button, SecondaryTitle, Container, Form, Input, SpanError} from '@/styles/global-styles'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import * as S from './ContactStyle'
+import axios from 'axios'
 
 type ContactFormData = z.infer<typeof ContactFormSchema>
 
@@ -19,7 +19,7 @@ const ContactFormSchema = z.object(
 )
 
 async function handleForm ({name, last_name, email, phone, message}: ContactFormData) {
-    console.log({name, last_name, email, phone, message})
+    axios.post("/api/contact", {name, last_name, email, phone, message})
 }
 
 export const Contact = () => {
@@ -27,37 +27,35 @@ export const Contact = () => {
     const {register, handleSubmit, formState: {errors}} = useForm<ContactFormData>({resolver: zodResolver(ContactFormSchema)});
     
     return (
-        <Container>
+        <Container id='Contact'>
             <SecondaryTitle>Get in touch</SecondaryTitle>
             <Form onSubmit={handleSubmit(handleForm)}>
 
-                <S.Div>  
-
-                    <S.Div $column>       
+                <Container $flexRowContainer>  
+                    <Container>       
                     <Input {...register('name')} type='text' placeholder='Name' autoComplete='name'></Input>
-                    {errors.name && <S.spanError>{errors.name.message}</S.spanError>}
-                    </S.Div>
+                    {errors.name && <SpanError>{errors.name.message}</SpanError>}
+                    </Container>
 
-                    <S.Div $column>
+                    <Container>
                     <Input {...register('last_name')} type='text' placeholder='Last Name'></Input>
-                    {errors.last_name && <S.spanError>{errors.last_name.message}</S.spanError>}
-                    </S.Div>
+                    {errors.last_name && <SpanError>{errors.last_name.message}</SpanError>}
+                    </Container>
+                </Container>
 
-                </S.Div>
+                <Container $flexRowContainer>
 
-                <S.Div>
-
-                    <S.Div $column>
+                    <Container>
                         <Input {...register('email')} type='text' placeholder='Email' autoComplete='email'></Input>
-                        {errors.email && <S.spanError>{errors.email.message}</S.spanError>}
-                    </S.Div>
+                        {errors.email && <SpanError>{errors.email.message}</SpanError>}
+                    </Container>
 
-                    <S.Div $column>
+                    <Container>
                     <Input {...register('phone')} type='text' placeholder='Phone Number'></Input>
-                    {errors.phone && <S.spanError>{errors.phone.message}</S.spanError>}
-                    </S.Div>
+                    {errors.phone && <SpanError>{errors.phone.message}</SpanError>}
+                    </Container>
 
-                </S.Div>
+                </Container>
 
                 <Input $messagebox {...register('message')} type='text' placeholder='Message'></Input>
                 <Button $primary type='submit'>Submit now</Button>

@@ -1,12 +1,12 @@
-import {Container} from "@/styles/Styles"
-import * as S from "./FooterStyle"
+import { Container } from "@/styles/global-styles"
+import { Author } from "./FooterStyle"
 
 const Footer = () => {
     return (
         <Container>
-            <S.Div1>
+            <Author>
                 @Lucas.Lima 2024
-            </S.Div1>
+            </Author>
         </Container>
     );
 }
