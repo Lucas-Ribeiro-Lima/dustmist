@@ -7,13 +7,17 @@ export const CompentenciesContainer = styled.div`
     display: flex;
     flex-direction: row;
     gap: 60px;
+    width: 90vw;
+    @media ( max-width: 1240px ) {
+        flex-direction: column;
+    }
 `
 
 export const Competencie = styled.div`
     display: flex;
     flex-direction: column;
     gap: 29.67px;
-    width: 350px;
+    width: 100%;
     height: 241px;
     background-color: #212121;
     font-size: 36px;
@@ -29,7 +33,7 @@ export const Competencie = styled.div`
     }
     span {
         /* display: none; */
-        width: inherit;
+        width: 100%;
         height: 5px;
         background: #27AE60;
     }
@@ -40,12 +44,17 @@ export const SkillsContainer = styled.div`
     flex-direction: row;
     justify-content: center;
     text-align: center;
-    width: 1168px;
+    width: 80vw;
     height: 235px;
     gap: 120px;
     font-size: 72px;
     font-weight: 700;
     background-color: #212121;
+    @media ( max-width: 1240px ) {
+        flex-direction: column;
+        height: fit-content;
+        gap: 40px;
+    }
     div {
         display: flex;
         color: #4F4F4F;
