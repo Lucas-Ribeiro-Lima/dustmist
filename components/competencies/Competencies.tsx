@@ -6,7 +6,7 @@ import Image from 'next/image';
 export const Competencies = () => {
     return (
         <Container id='Competencies'>
-            <SecondaryTitle>What i do</SecondaryTitle>
+            <SecondaryTitle>What I do</SecondaryTitle>
             <CompentenciesContainer>
                 <Competencie>
                     <Image src='/software-development.svg' width={57} height={46.474} alt='Software Development Icon'></Image>
