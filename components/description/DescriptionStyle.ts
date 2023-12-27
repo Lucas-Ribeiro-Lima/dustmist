@@ -20,9 +20,13 @@ export const DescriptionContainer = styled.div`
 
     ul{
         display: flex;
-        width: 1000px;
-        justify-content: space-between;
+        justify-content: center;
+        width: 70vw;
+        gap: 20%;
         list-style: none;
+        @media ( max-width: 1240px ) {
+            flex-direction: column;
+        }
     }
 
     li{

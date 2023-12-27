@@ -46,6 +46,9 @@ export const Container = styled.div<{$flexRowContainer?:boolean}>`
             flex-direction: row; 
             gap: 0px; 
             align-items: start;
+            @media ( max-width: 1240px ) {
+                flex-direction: column;             
+             }
         `}
 `
 
@@ -68,7 +71,7 @@ export const PrimaryTitle = styled.h1<{$marginBottom?:number}>`
 export const SecondaryTitle = styled.h2`
     font-size: ${Pallete.SECONDARY_TITLE_SIZE};
     font-weight: ${Pallete.LG_FONT_WEIGHT};
-    @media ( max-width: 1240px ) {
+        @media ( max-width: 1240px ) {
         font-size: 36px;                
     }
 `
@@ -108,6 +111,9 @@ export const Form = styled.form`
     gap: 20px;
     width: 753px;
     height: 425px;
+    @media ( max-width: 1240px ) {
+
+    }
 `
 
 export const Input = styled.input`
@@ -133,6 +139,9 @@ export const TextArea = styled.textarea`
     height: 109px;
     overflow-wrap: break-word;
     resize: none;
+    @media ( max-width: 1240px ) {
+        width: 90vw;             
+    }
 `
 
 export const SpanError = styled.span`
