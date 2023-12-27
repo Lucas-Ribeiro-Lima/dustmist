@@ -1,9 +1,12 @@
 'use client'
 
 import {Button, SecondaryTitle, Container, Form, Input, SpanError, TextArea} from '@/styles/global-styles'
+
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+
+import { FormEvent } from 'react'
 import axios from 'axios'
 
 type ContactFormData = z.infer<typeof ContactFormSchema>
@@ -18,9 +21,10 @@ const ContactFormSchema = z.object(
     }
 )
 
-async function handleForm ({name, last_name, email, phone, message}: ContactFormData) {
-    axios.post("/api/contact", {name, last_name, email, phone, message})
-    // console.log({name, last_name, email, phone, message})
+async function handleForm ({name, last_name, email, phone, message}: ContactFormData, event: FormEvent) {
+    event.preventDefault();
+    // console.log(name, last_name, email, phone, message);
+    await axios.post("/api/contact", { name, last_name, email, phone, message });
 }
 
 export const Contact = () => {
