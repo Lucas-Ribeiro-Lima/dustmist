@@ -2,7 +2,6 @@
 
 import styled, {css, createGlobalStyle} from "styled-components"
 import * as Pallete from './variables'
-import { PAGES_DIR_ALIAS } from "next/dist/lib/constants"
 
 export const GlobalStyle = createGlobalStyle`
     body {
@@ -10,14 +9,16 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: ${Pallete.SM_FONT_WEIGHT};
         font-size: ${Pallete.MD_FONT_SIZE};
         color: ${Pallete.WHITE_COLOR};
-        background-color: ${Pallete.GRAY_COLOR};w
+        background-color: ${Pallete.GRAY_COLOR};
         line-height: normal;
+        width: 100vw;
     }
 `
 
 export const GlobalContainer = styled.div`
     display: flex;
     justify-content: center;
+    width: 100%;
     ::selection{
         background-color: #27AE60;
         color: #FFFF;
@@ -33,9 +34,6 @@ export const Layout = styled.div`
     background-color: ${Pallete.BLACK_COLOR};
     flex-direction: column;
     border-radius: 20px;
-    @media (max-width: 1439) {
-        width: 100vw;        
-    }
 `;
 
 export const Container = styled.div<{$flexRowContainer?:boolean}>`
@@ -62,11 +60,17 @@ export const PrimaryTitle = styled.h1<{$marginBottom?:number}>`
     font-size: ${Pallete.PRIMARY_TITLE_SIZE};
     font-weight: ${Pallete.LG_FONT_WEIGHT};
     margin-bottom: ${props => props.$marginBottom}px;
+    @media ( max-width: 1240px ) {
+        font-size: 36px;                
+    }
 `
 
 export const SecondaryTitle = styled.h2`
-    font-size: ${Pallete.PRIMARY_TITLE_SIZE};
+    font-size: ${Pallete.SECONDARY_TITLE_SIZE};
     font-weight: ${Pallete.LG_FONT_WEIGHT};
+    @media ( max-width: 1240px ) {
+        font-size: 36px;                
+    }
 `
 
 export const SubTitle = styled.div`

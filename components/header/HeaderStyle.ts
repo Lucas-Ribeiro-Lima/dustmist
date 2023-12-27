@@ -10,8 +10,9 @@ export const HeaderContainer = styled.div`
     margin-right: 87px;
     margin-top: 28px;
     @media (max-width: 1440px) {
-        width: 100vw;
+        flex-direction: column;
         justify-content: center;
+        margin: 0px;
     }
 `
 
@@ -21,12 +22,16 @@ export const Navbar = styled.div`
         padding-top: 12px;
         padding-bottom: 12px;
         flex-direction: row;
-        gap: 40px;
         list-style: none;
-        flex-grow: 1;
+        gap: 40px;
     }
     a {
         color: #fffF;
         text-decoration: none;
+    }
+    @media (max-width: 1440px) {
+        ul {
+            padding: 0px;
+        }
     }
 `;

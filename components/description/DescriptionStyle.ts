@@ -9,9 +9,13 @@ export const DescriptionContainer = styled.div`
     align-items: center;
     text-align: center;
     main{
-        width: 745px;
-        height: 136px;
+        width: 40vw;
         font-style: normal;
+        margin-bottom: 44px;
+        @media ( max-width: 1240px ) {
+            width: 90vw;
+            text-align: justify                
+        }
     }
 
     ul{

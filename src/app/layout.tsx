@@ -6,8 +6,14 @@ import StyledComponentsRegistry from '../../lib/registry'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Lucas Lima Portfólio',
-  description: 'Portfólio',
+  title: 'Lucas Lima',
+  description: 'Pagina de portfólio de Lucas Ribeiro Lima, visando demonstrar e explorar as habilidades que adquiri em programação em diversas aréas.',
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 }
 
 export default function RootLayout({
