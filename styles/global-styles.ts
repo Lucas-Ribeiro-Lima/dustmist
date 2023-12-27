@@ -1,16 +1,16 @@
 'use client'
 
 import styled, {css, createGlobalStyle} from "styled-components"
+import * as Pallete from './variables'
+import { PAGES_DIR_ALIAS } from "next/dist/lib/constants"
 
 export const GlobalStyle = createGlobalStyle`
     body {
-        background-color: #333;
-        color: #fff;
         font-family: 'DM Sans', sans-serif;
-        font-weight: 400;
+        font-weight: ${Pallete.SM_FONT_WEIGHT};
+        font-size: ${Pallete.MD_FONT_SIZE};
+        color: ${Pallete.WHITE_COLOR};
         line-height: normal;
-        font-size: 18px;
-
     }
 `
 
@@ -21,6 +21,7 @@ export const GlobalContainer = styled.div`
         background-color: #27AE60;
         color: #FFFF;
     }  
+
 `
 
 export const Layout = styled.div`
@@ -28,9 +29,12 @@ export const Layout = styled.div`
     gap: 40px;
     width: 1440px;
     height: 100%;
-    background-color: #171717;
+    background-color: ${Pallete.BLACK_COLOR};
     flex-direction: column;
     border-radius: 20px;
+    @media (max-width: 1439) {
+        width: 100vw;        
+    }
 `;
 
 export const Container = styled.div<{$flexRowContainer?:boolean}>`
@@ -49,27 +53,27 @@ export const Container = styled.div<{$flexRowContainer?:boolean}>`
 export const MainTitle = styled.h1`
     width: 212px;
     height: 47px;
-    font-size: 36px;
+    font-size: ${Pallete.MAIN_TITLE_SIZE};
     font-weight: 700;
 `
 
 export const PrimaryTitle = styled.h1<{$marginBottom?:number}>`
-    font-size: 48px;
-    font-weight: 700;
+    font-size: ${Pallete.PRIMARY_TITLE_SIZE};
+    font-weight: ${Pallete.LG_FONT_WEIGHT};
     margin-bottom: ${props => props.$marginBottom}px;
 `
 
 export const SecondaryTitle = styled.h2`
-    font-size: 48px;
-    font-weight: 700;
+    font-size: ${Pallete.PRIMARY_TITLE_SIZE};
+    font-weight: ${Pallete.LG_FONT_WEIGHT};
 `
 
 export const SubTitle = styled.div`
     margin-bottom: 47px;
-    color: #828282;
-    font-size: 18px;
+    color: ${Pallete.SUBTITLE_COLOR};
+    font-size: ${Pallete.MD_FONT_SIZE};
     font-style: normal;
-    font-weight: 500;
+    font-weight: ${Pallete.MD_FONT_WEIGHT};
 `;
 
 export const Button = styled.button<{ $primary?:boolean }>`
@@ -78,17 +82,17 @@ export const Button = styled.button<{ $primary?:boolean }>`
     margin-right: 4px;
     color: #FFFF;
     border: 1px solid #f2f2f2;
-    background: #171717;
+    background: ${Pallete.BLACK_COLOR};
     cursor: pointer;
     ${props =>
         props.$primary && css`
-        background: #27AE60;
+        background: ${Pallete.GREEN_COLOR};
         border: none;
         `
     }
     a{
         text-decoration: none;
-        color: #FFFF;
+        color: ${Pallete.WHITE_COLOR};
     }
 `
 
@@ -109,14 +113,14 @@ export const Input = styled.input`
     border: none;
     border-bottom: 1px solid #4f4f4f;
     height: max-content;
-    color: #FFFF;
+    color: ${Pallete.WHITE_COLOR};
 
 `
 
 export const TextArea = styled.textarea`
     font-family: 'DM Sans', sans-serif;
     background-color: transparent;
-    color: #FFFF;
+    color: ${Pallete.WHITE_COLOR};;
     margin: 20px;
     margin-bottom: 0px;
     border: 1px solid #4f4f4f;
@@ -129,6 +133,6 @@ export const TextArea = styled.textarea`
 export const SpanError = styled.span`
     align-self: self-start;
     margin-left: 20px;
-    font-size: 12px;
-    color: red;
+    font-size: ${Pallete.SM_FONT_SIZE};
+    color: ${Pallete.RED_COLOR};
 `
