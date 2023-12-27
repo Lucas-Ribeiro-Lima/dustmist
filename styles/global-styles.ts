@@ -27,8 +27,7 @@ export const GlobalContainer = styled.div`
 export const Layout = styled.div`
     display: flex;
     gap: 40px;
-    width: 100vw;
-    /* height: 100%; */
+    width: 100%;
     background-color: ${Pallete.BLACK_COLOR};
     flex-direction: column;
     border-radius: 20px;
