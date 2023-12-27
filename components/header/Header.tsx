@@ -1,5 +1,5 @@
 import { MainTitle } from '@/styles/global-styles';
-import { HeaderContainer, Navbar } from './Style';
+import { HeaderContainer, Navbar } from './HeaderStyle';
 import Link from 'next/link';
 
 const Header = () => {

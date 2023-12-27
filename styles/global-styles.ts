@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: ${Pallete.SM_FONT_WEIGHT};
         font-size: ${Pallete.MD_FONT_SIZE};
         color: ${Pallete.WHITE_COLOR};
+        background-color: ${Pallete.GRAY_COLOR};
         line-height: normal;
     }
 `

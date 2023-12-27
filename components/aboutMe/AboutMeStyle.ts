@@ -9,6 +9,11 @@ export const AboutMeContainer = styled.div`
     margin-left: 8rem;
     margin-top: 2.5rem;
     gap: 109px;
+    @media ( max-width: 1240px ) {
+        flex-direction: column-reverse;
+        justify-content: center;
+        margin: 0px;
+    }
 `;
 
 
