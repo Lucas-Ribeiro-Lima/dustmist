@@ -22,10 +22,6 @@ async function ConnectToDatabase(uri: string, database: string) {
     }
 }
 
-// export async function GET(request: VercelRequest, response: VercelResponse){
-//     return response.status(402)
-// }
-
 export async function POST(req: Request, res: Response) {
 
     try {
