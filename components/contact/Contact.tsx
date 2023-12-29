@@ -1,6 +1,6 @@
 'use client'
 
-import {Button, SecondaryTitle, Container, Form, Input, SpanError, TextArea} from '@/styles/global-styles'
+import { Button, SecondaryTitle, Container, Form, Input, SpanError, TextArea } from '@/styles/global-styles'
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -21,23 +21,30 @@ const ContactFormSchema = z.object(
     }
 )
 
-async function handleForm ({name, last_name, email, phone, message}: ContactFormData, event: FormEvent) {
+async function handleForm({ name, last_name, email, phone, message }: ContactFormData, event: FormEvent) {
     event.preventDefault();
-    // console.log(name, last_name, email, phone, message);
-    await axios.post("/api/contact", { name, last_name, email, phone, message });
+
+    await axios
+        .post("/api/contact", { name, last_name, email, phone, message })
+        .then((res) => console.log({ res }))
+        .catch((error) => {
+            console.error(error.message)
+            throw new Error("Error on form submit");
+        })
+
 }
 
 export const Contact = () => {
 
-    const {register, handleSubmit, formState: {errors}} = useForm<ContactFormData>({resolver: zodResolver(ContactFormSchema)});
-    
+    const { register, handleSubmit, formState: { errors } } = useForm<ContactFormData>({ resolver: zodResolver(ContactFormSchema) });
+
     return (
         <Container id='Contact'>
             <SecondaryTitle>Get in touch</SecondaryTitle>
             <Form onSubmit={handleSubmit(handleForm)} autoComplete='off'>
 
-                <Container $flexRowContainer>  
-                    <Container>       
+                <Container $flexRowContainer>
+                    <Container>
                         <label>
                             <Input {...register('name')} type='text' placeholder='Name'></Input>
                             {errors.name && <SpanError>{errors.name.message}</SpanError>}
