@@ -1,5 +1,6 @@
 'use client'
 
+
 import styled, {css, createGlobalStyle} from "styled-components"
 import * as Pallete from './variables'
 
@@ -33,11 +34,12 @@ export const Layout = styled.div`
     border-radius: 20px;
 `;
 
-export const Container = styled.div<{$flexRowContainer?:boolean}>`
+export const Container = styled.div<{$flexRowContainer?:boolean, $BackgroundContainer?: string}>`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: ${props => props.$BackgroundContainer};
     ${props => props.$flexRowContainer && 
         css`
             flex-direction: row; 
@@ -47,6 +49,20 @@ export const Container = styled.div<{$flexRowContainer?:boolean}>`
                 flex-direction: column;             
              }
         `}
+`
+
+export const ContainerModal = styled.div`
+    position: fixed;
+    top: 10%;
+    background-color: #333;
+    height: fit-content;
+    width: 50%;
+    border-radius: 36px;
+    padding: 20px;
+    @media ( max-width: 1240px ) {
+        width: 100vw;
+        height: 100vh;
+    }    
 `
 
 export const MainTitle = styled.h1`
@@ -81,7 +97,7 @@ export const SubTitle = styled.div`
     font-weight: ${Pallete.MD_FONT_WEIGHT};
 `;
 
-export const Button = styled.button<{ $primary?:boolean }>`
+export const Button = styled.button<{ $primary?:boolean, $close?: boolean }>`
     width: 143px;
     height: 42px;
     margin-right: 4px;
@@ -95,6 +111,45 @@ export const Button = styled.button<{ $primary?:boolean }>`
         border: none;
         `
     }
+    ${props =>
+        props.$close && css `
+        background: ${Pallete.RED_COLOR};
+        color: ${Pallete.BLACK_COLOR};
+        border: none;
+        `
+    }
+    a{
+        text-decoration: none;
+        color: ${Pallete.WHITE_COLOR};
+    }
+`
+
+export const CloseButton = styled.button`
+    position: relative;
+    left: 12rem;
+    width: 243px;
+    height: 82px;
+    margin-right: 4px;
+    color: ${Pallete.RED_COLOR};
+    border: none;
+    background: transparent;
+    cursor: pointer;
+`
+
+export const BigButton = styled.button`
+    width: 343px;
+    height: 82px;
+    color: #FFFF;
+    margin-bottom: 40px;
+    border: none;
+    border-radius: 24px;
+    font-size: ${Pallete.MD_FONT_SIZE};
+    font-weight: ${Pallete.MD_FONT_WEIGHT};
+    background: ${Pallete.GREEN_COLOR};
+    :hover{
+        background-color: #17502f;
+    }
+    cursor: pointer;
     a{
         text-decoration: none;
         color: ${Pallete.WHITE_COLOR};

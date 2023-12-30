@@ -1,0 +1,103 @@
+'use client'
+
+import { Button, Container, Form, Input, SecondaryTitle, SpanError, TextArea } from '@/styles/global-styles'
+import { FormEvent, useContext } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import { ModalContext } from '@/components/modal/Modal'
+import axios from 'axios'
+import { ToggleLeft } from 'lucide-react'
+
+const ContactFormSchema = z.object(
+    {
+        name: z.string().min(4, 'Preencha seu nome'),
+        last_name: z.string().min(4, 'Preencha seu sobrenome'),
+        email: z.string().email('Formato de e-mail inválido'),
+        phone: z.string().min(1, 'Preencha seu número de contato'),
+        message: z.string().min(10, 'Escreva uma curta mensagem').max(512, 'Você ultrapassou o limite de 512 caracteres')
+    }
+)
+
+type ContactFormData = z.infer<typeof ContactFormSchema>
+
+async function handleForm({ name, last_name, email, phone, message }: ContactFormData, event: FormEvent) {
+    event.preventDefault();
+
+    await axios
+        .post("/api/contact", { name, last_name, email, phone, message })
+        .then((res) => {
+            console.log({ res });
+        })
+        .catch((error) => {
+            console.error(error.message);
+            throw new Error("Error on form submit");
+        })
+
+}
+
+export function ContactForm() {
+
+    const { register, handleSubmit, formState: { errors } } = useForm<ContactFormData>({ resolver: zodResolver(ContactFormSchema) });
+
+    const { toggleModal } = useContext(ModalContext)
+
+    return (
+        <Container id='Contact'>
+            <SecondaryTitle>
+                Contact Me
+            </SecondaryTitle>
+            <Form
+                onSubmit={handleSubmit(handleForm)}
+                onReset={toggleModal}
+                autoComplete='off'>
+                <Container $flexRowContainer>
+                    <Container>
+                        <label>
+                            <Input {...register('name')} type='text' placeholder='Name'></Input>
+                            {errors.name && <SpanError>{errors.name.message}</SpanError>}
+                        </label>
+                    </Container>
+
+                    <Container>
+                        <label>
+                            <Input {...register('last_name')} type='text' placeholder='Last Name'></Input>
+                            {errors.last_name && <SpanError>{errors.last_name.message}</SpanError>}
+                        </label>
+                    </Container>
+                </Container>
+
+                <Container $flexRowContainer>
+
+                    <Container>
+                        <label>
+                            <Input {...register('email')} type='text' placeholder='Email'></Input>
+                            {errors.email && <SpanError>{errors.email.message}</SpanError>}
+                        </label>
+                    </Container>
+
+                    <Container>
+                        <label>
+                            <Input {...register('phone')} type='text' placeholder='Phone Number'></Input>
+                            {errors.phone && <SpanError>{errors.phone.message}</SpanError>}
+                        </label>
+                    </Container>
+
+                </Container>
+
+                <Container>
+                    <label>
+                        <TextArea {...register('message')} placeholder='Message'></TextArea>
+                        {errors.message && <SpanError>{errors.message.message}</SpanError>}
+                    </label>
+                </Container>
+
+                <Container $flexRowContainer>
+                    <Button $primary type='submit'>Submit now</Button>
+                    <Button $close type='reset'>Cancel</Button>
+                </Container>
+
+            </Form>
+        </Container>
+    )
+}
