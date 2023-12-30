@@ -1,6 +1,5 @@
 import { CompentenciesContainer, Competencie, Skills, SkillsContainer } from './CompetenciesStyle';
 import { Container, SecondaryTitle } from '@/styles/global-styles';
-import { useState, useEffect } from 'react'
 import Image from 'next/image';
 
 export const Competencies = () => {
@@ -33,19 +32,19 @@ export const Competencies = () => {
             <SecondaryTitle>My Skills</SecondaryTitle>
             <SkillsContainer>
                 <Skills>
-                    70%
+                    80%
                     <span>HTML</span>
                 </Skills>
                 <Skills>
-                    60%
+                    70%
                     <span>CSS</span>
                 </Skills>
                 <Skills>
-                    30%
-                    <span>JAVASCRIPT</span>
+                    50%
+                    <span>TYPESCRIPT</span>
                 </Skills>
                 <Skills>
-                    50%
+                    70%
                     <span>NEXT.JS</span>
                 </Skills>
             </SkillsContainer>

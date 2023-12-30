@@ -7,7 +7,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { ModalContext } from '@/components/modal/Modal'
 import axios from 'axios'
-import { ToggleLeft } from 'lucide-react'
 
 const ContactFormSchema = z.object(
     {
