@@ -44,7 +44,7 @@ export const Competencies = () => {
                     <span>TYPESCRIPT</span>
                 </Skills>
                 <Skills>
-                    70%
+                    60%
                     <span>NEXT.JS</span>
                 </Skills>
             </SkillsContainer>
