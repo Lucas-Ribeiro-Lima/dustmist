@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { GlobalStyle, GlobalContainer, Layout } from '@/styles/global-styles'
+import { GlobalStyle, GlobalContainer } from '@/styles/global-styles'
 import StyledComponentsRegistry from '../../lib/registry'
+import React from 'react'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -17,23 +18,22 @@ export const viewport = {
   maximumScale: 1,
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
+export default function RootLayout(props: {
+  children: React.ReactNode,
+  modal: React.ReactNode,
 }) {
   return (
     <html lang="en">
-        <body className={inter.className}>
-          <GlobalStyle/>
-          <StyledComponentsRegistry>
-            <GlobalContainer>
-              <Layout>
-                {children}
-              </Layout>
-            </GlobalContainer>
-          </StyledComponentsRegistry>
-        </body>
+      <body className={inter.className}>
+        <GlobalStyle />
+        <StyledComponentsRegistry>
+          <GlobalContainer>
+            {props.children}
+            {props.modal}
+            <div id='modal-root'></div>
+          </GlobalContainer>
+        </StyledComponentsRegistry>
+      </body>
     </html>
   )
 }

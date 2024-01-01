@@ -15,10 +15,10 @@ const Description = () => {
                         <li>
                             <Image src="/descriptionIcon.svg" width={65} height={65} alt="Description Icon"></Image>
                             <div>
-                                Full Name 
+                                Name 
                             </div>
                             <div>
-                                Lucas Ribeiro Lima
+                                Lucas
                             </div>
                         </li>
                         <li>
@@ -27,7 +27,7 @@ const Description = () => {
                                 Email 
                             </div>
                             <div>
-                                lucasribeirolima
+                                lucasribeirolima974@gmail.com
                             </div>
                         </li>
                         <li>

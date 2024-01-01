@@ -1,13 +1,14 @@
 'use client'
 
 import { Button, Container, Form, Input, SecondaryTitle, SpanError, TextArea } from '@/styles/global-styles'
-import { FormEvent, useContext } from 'react'
+import { FormEvent } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { ModalContext } from '@/components/modal/Modal'
+import { useRouter } from 'next/navigation'
 import axios from 'axios'
-import { ToggleLeft } from 'lucide-react'
+
+type ContactFormData = z.infer<typeof ContactFormSchema>
 
 const ContactFormSchema = z.object(
     {
@@ -19,29 +20,28 @@ const ContactFormSchema = z.object(
     }
 )
 
-type ContactFormData = z.infer<typeof ContactFormSchema>
+export function ContactForm() {
+    
+    const { register, handleSubmit, formState: { errors } } = useForm<ContactFormData>({ resolver: zodResolver(ContactFormSchema) });
+    
+    const router = useRouter();
 
-async function handleForm({ name, last_name, email, phone, message }: ContactFormData, event: FormEvent) {
-    event.preventDefault();
-
-    await axios
-        .post("/api/contact", { name, last_name, email, phone, message })
-        .then((res) => {
-            console.log({ res });
-        })
-        .catch((error) => {
-            console.error(error.message);
-            throw new Error("Error on form submit");
-        })
+    async function handleForm({ name, last_name, email, phone, message }: ContactFormData, event: FormEvent) {
+        event.preventDefault();
+    
+        await axios
+            .post("/api/contact", { name, last_name, email, phone, message })
+            .then((res) => {
+                console.log({ res });
+                router.push('/sucess');
+            })
+            .catch((error) => {
+                console.error(error.message);
+                throw new Error("Error on form submit")
+            })
 
 }
-
-export function ContactForm() {
-
-    const { register, handleSubmit, formState: { errors } } = useForm<ContactFormData>({ resolver: zodResolver(ContactFormSchema) });
-
-    const { toggleModal } = useContext(ModalContext)
-
+    
     return (
         <Container id='Contact'>
             <SecondaryTitle>
@@ -49,7 +49,7 @@ export function ContactForm() {
             </SecondaryTitle>
             <Form
                 onSubmit={handleSubmit(handleForm)}
-                onReset={toggleModal}
+                onReset={router.back}
                 autoComplete='off'>
                 <Container $flexRowContainer>
                     <Container>

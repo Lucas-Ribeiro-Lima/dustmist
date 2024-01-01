@@ -15,7 +15,7 @@ const Header = () => {
                         <Link href="/#Competencies">Services</Link>
                     </li>
                     <li>
-                        <Link href="/#Contact">Contact Me</Link>
+                        <Link href="/contact">Contact Me</Link>
                     </li>
                 </ul>
             </Navbar>

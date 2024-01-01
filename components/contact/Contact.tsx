@@ -1,14 +1,14 @@
-import { Container, SecondaryTitle } from "@/styles/global-styles";
-import { ModalProvider } from "../modal/Modal";
-import { ContactForm } from "./ContactForm";
+import { BigButton, Container } from "@/styles/global-styles";
+import Link from "next/link";
 
-export function Contact () {
-    return(
-        <Container id="Contact">
-            <SecondaryTitle>Get in touch</SecondaryTitle>
-            <ModalProvider openButtonText="Contact Me">
-                <ContactForm></ContactForm>
-            </ModalProvider>
+export function Contact() {
+    return (
+        <Container>
+            <BigButton id="Contact">
+                <Link href='/contact'>
+                    Get in touch
+                </Link>
+            </BigButton>
         </Container>
     )
 }

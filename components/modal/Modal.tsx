@@ -1,37 +1,38 @@
 'use client'
 
-import { ContainerModal, BigButton } from "@/styles/global-styles"
-import { ReactNode, createContext, useState } from "react"
+import { Button, ContainerModal, ModalBackDrop } from "@/styles/global-styles"
+import { ReactNode, useEffect, useRef} from "react"
+import { useRouter } from "next/navigation"
+import { createPortal } from "react-dom"
 
-
-type ModalContextType = {
-    isOpen: boolean,
-    toggleModal: () => void,
+type ModalType = {
+    children: ReactNode
 }
 
-type ModalProviderType = {
-    openButtonText: string,
-    children: ReactNode,
-}
+export function Modal({ children }: ModalType) {
 
-export const ModalContext = createContext({} as ModalContextType)
+    const router = useRouter();
+    const dialogRef = useRef(null);
 
-export function ModalProvider({ children, openButtonText}: ModalProviderType) {
+    useEffect(() => {
+        //@ts-ignore
+        if (!dialogRef.current?.open) {
+            //@ts-ignore
+            dialogRef.current?.showModal();
+        }
+    }, []);
 
-    const [isOpen, setIsOpen] = useState(false);
+    function onDismiss() {
+        router.back();
+    };
 
-    const toggleModal = () => {
-        setIsOpen(!isOpen)
-    }
-
-    return (
-        <ModalContext.Provider value={{ isOpen, toggleModal }}>            
-            {isOpen && (
-                <ContainerModal>
-                    {children}
-                </ContainerModal>
-            )}
-            <BigButton onClick={toggleModal}> {openButtonText} </BigButton>
-        </ModalContext.Provider>
-    )
+    return createPortal(
+        <ModalBackDrop>
+            <ContainerModal ref={dialogRef} onClose={onDismiss}>
+                {children}
+                {/* <Button $close onClick={onDismiss}>Cancel</Button> */}
+            </ContainerModal>        
+        </ModalBackDrop>,
+        document.getElementById('modal-root')
+    );
 }
