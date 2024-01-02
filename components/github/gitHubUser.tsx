@@ -22,7 +22,6 @@ type GitHubUserData = {
 export default async function GithubUser () {
 
     const GitUser = await GetGithubUser();
-    console.log(GitUser)
 
     return(
         <Container $BackgroundContainer="#333">

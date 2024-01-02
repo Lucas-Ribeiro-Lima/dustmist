@@ -1,12 +1,12 @@
 'use client'
 
 import { Modal } from "@/components/modal/Modal";
-import { Button, Container, PrimaryTitle } from "@/styles/global-styles";
+import { Button, Container, ErrorTitle } from "@/styles/global-styles";
 import { useRouter } from 'next/navigation'
 import { useEffect } from "react";
 
 
-export default function Sucess() {
+export default function Error() {
 
     useEffect(() => {
         new Promise<void>(() => {
@@ -23,7 +23,7 @@ export default function Sucess() {
     return(
         <Modal>
             <Container>
-                <PrimaryTitle>Sucess submiting form!</PrimaryTitle>
+                <ErrorTitle>Error submiting form...</ErrorTitle>
                 <Button $close onClick={DismissModal}>Close</Button>
             </Container>
         </Modal>

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, ContainerModal, ModalBackDrop } from "@/styles/global-styles"
+import { ContainerModal, ModalBackDrop } from "@/styles/global-styles"
 import { ReactNode, useEffect, useRef} from "react"
 import { useRouter } from "next/navigation"
 import { createPortal } from "react-dom"
@@ -26,13 +26,17 @@ export function Modal({ children }: ModalType) {
         router.back();
     };
 
-    return createPortal(
-        <ModalBackDrop>
-            <ContainerModal ref={dialogRef} onClose={onDismiss}>
-                {children}
-                {/* <Button $close onClick={onDismiss}>Cancel</Button> */}
-            </ContainerModal>        
-        </ModalBackDrop>,
-        document.getElementById('modal-root')
-    );
+    if (typeof window !== 'undefined'){
+        return createPortal(
+            <ModalBackDrop>
+                <ContainerModal ref={dialogRef} onClose={onDismiss}>
+                    {children}
+                    {/* <Button $close onClick={onDismiss}>Cancel</Button> */}
+                </ContainerModal>        
+            </ModalBackDrop>,
+            document.getElementById('modal-root')
+            );
+    }
+
+    return null;
 }

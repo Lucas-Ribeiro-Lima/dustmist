@@ -37,7 +37,8 @@ export function ContactForm() {
             })
             .catch((error) => {
                 console.error(error.message);
-                throw new Error("Error on form submit")
+                router.push('/error')
+                // throw new Error("Error on form submit")
             })
 
 }
