@@ -4,6 +4,7 @@ import Competencies from "@/components/competencies/Competencies";
 import Footer from "@/components/footer/Footer";
 import Description from "@/components/description/Description";
 import { Contact } from "@/components/contact/Contact";
+import GithubReps from "@/components/github/gitHubRepo";
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { GlobalStyle, GlobalContainer } from '@/styles/global-styles'
+import { GlobalStyle, GlobalContainer, Layout } from '@/styles/global-styles'
 import StyledComponentsRegistry from '../../lib/registry'
 import React from 'react'
 
@@ -28,9 +28,11 @@ export default function RootLayout(props: {
         <GlobalStyle />
         <StyledComponentsRegistry>
           <GlobalContainer>
-            {props.children}
-            {props.modal}
-            <div id='modal-root'></div>
+            <Layout>
+              {props.children}
+              {props.modal}
+              <div id='modal-root'></div>
+            </Layout>
           </GlobalContainer>
         </StyledComponentsRegistry>
       </body>

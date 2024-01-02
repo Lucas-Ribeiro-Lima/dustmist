@@ -22,6 +22,7 @@ export const BLACK_COLOR = '#171717'
 export const GRAY_COLOR = '#333'
 export const RED_COLOR = 'red'
 export const GREEN_COLOR = '#27AE60'
+export const WHITE_GREEN_COLOR = '#4ADF89'
 export const SUBTITLE_COLOR = '#828282'
 
 //Responsive

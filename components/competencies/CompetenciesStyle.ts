@@ -7,7 +7,7 @@ export const CompentenciesContainer = styled.div`
     display: flex;
     flex-direction: row;
     gap: 60px;
-    width: 90vw;
+    width: 90%;
     @media ( max-width: 1240px ) {
         flex-direction: column;
     }
@@ -20,8 +20,10 @@ export const Competencie = styled.div`
     width: 100%;
     height: 241px;
     background-color: #212121;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
     font-size: 36px;
-    font-weight: 500;
+    font-weight: 600;
     color: #535353;
     img {
         padding-left: 50px;
@@ -29,6 +31,7 @@ export const Competencie = styled.div`
     }
     div {
         padding-left: 50px;
+        padding-right: 8px;
         flex-grow: 1;
     }
     span {
@@ -44,12 +47,13 @@ export const SkillsContainer = styled.div`
     flex-direction: row;
     justify-content: center;
     text-align: center;
-    width: 80vw;
+    width: 80%;
     height: 235px;
     gap: 120px;
     font-size: 72px;
     font-weight: 700;
     background-color: #212121;
+    border-radius: 50px;
     @media ( max-width: 1240px ) {
         flex-direction: column;
         height: fit-content;

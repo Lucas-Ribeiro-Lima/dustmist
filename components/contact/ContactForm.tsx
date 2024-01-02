@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Container, Form, Input, SecondaryTitle, SpanError, TextArea } from '@/styles/global-styles'
+import { Button, Container, Form, Input, Label, SecondaryTitle, SpanError, TextArea } from '@/styles/global-styles'
 import { FormEvent } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -53,43 +53,43 @@ export function ContactForm() {
                 autoComplete='off'>
                 <Container $flexRowContainer>
                     <Container>
-                        <label>
+                        <Label>
                             <Input {...register('name')} type='text' placeholder='Name'></Input>
                             {errors.name && <SpanError>{errors.name.message}</SpanError>}
-                        </label>
+                        </Label>
                     </Container>
 
                     <Container>
-                        <label>
+                        <Label>
                             <Input {...register('last_name')} type='text' placeholder='Last Name'></Input>
                             {errors.last_name && <SpanError>{errors.last_name.message}</SpanError>}
-                        </label>
+                        </Label>
                     </Container>
                 </Container>
 
                 <Container $flexRowContainer>
 
                     <Container>
-                        <label>
+                        <Label>
                             <Input {...register('email')} type='text' placeholder='Email'></Input>
                             {errors.email && <SpanError>{errors.email.message}</SpanError>}
-                        </label>
+                        </Label>
                     </Container>
 
                     <Container>
-                        <label>
+                        <Label>
                             <Input {...register('phone')} type='text' placeholder='Phone Number'></Input>
                             {errors.phone && <SpanError>{errors.phone.message}</SpanError>}
-                        </label>
+                        </Label>
                     </Container>
 
                 </Container>
 
                 <Container>
-                    <label>
+                    <Label>
                         <TextArea {...register('message')} placeholder='Message'></TextArea>
                         {errors.message && <SpanError>{errors.message.message}</SpanError>}
-                    </label>
+                    </Label>
                 </Container>
 
                 <Container $flexRowContainer>

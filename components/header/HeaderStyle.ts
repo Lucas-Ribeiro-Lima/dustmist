@@ -25,6 +25,11 @@ export const Navbar = styled.div`
         list-style: none;
         gap: 40px;
     }
+    li {
+        :hover{
+            text-shadow: 0px 0px 10px white;
+        }
+    }
     a {
         color: #fffF;
         text-decoration: none;

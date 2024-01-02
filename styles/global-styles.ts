@@ -20,20 +20,36 @@ export const GlobalContainer = styled.div`
     overflow: hidden;
     justify-content: center;
     align-items: center;
-    width: 100%;
     height: 100%;
-    background-color: ${Pallete.BLACK_COLOR};
+    background-color: ${Pallete.GRAY_COLOR};
+    padding: 20px;
     ::selection{
         background-color: #27AE60;
         color: #FFFF;
     }  
+    @media ( max-width: 1240px ) {
+        padding: 0px;            
+    }
 `
 
-export const Container = styled.div<{$flexRowContainer?:boolean, $BackgroundContainer?: string}>`
+export const Layout = styled.div`
+    width: 75%;
+    background-color: ${Pallete.BLACK_COLOR};
+    border-radius: 32px;
+    box-shadow: 0px 0px 4px ${Pallete.GREEN_COLOR};
+    @media ( max-width: 1240px ) {
+        width: 100vw;   
+        border-radius: 0px;         
+    }
+`
+
+export const Container = styled.div<{$flexRowContainer?:boolean, $BackgroundContainer?: string, $textColor?: string, $gapDistance?: number}>`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: ${props => props.$gapDistance}px;
+    color: ${props => props.$textColor};
     background-color: ${props => props.$BackgroundContainer};
     ${props => props.$flexRowContainer && 
         css`
@@ -44,12 +60,17 @@ export const Container = styled.div<{$flexRowContainer?:boolean, $BackgroundCont
                 flex-direction: column;             
              }
         `}
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 `
 
 export const ContainerModal = styled.dialog`
     display: flex;
     justify-content: center;
     color: ${Pallete.WHITE_COLOR};
+    box-shadow: 0px 0px 10px ${Pallete.GREEN_COLOR};
     background-color: #333;
     width: 800px;
     height: fit-content;
@@ -87,6 +108,7 @@ export const PrimaryTitle = styled.h1<{$marginBottom?:number}>`
     font-size: ${Pallete.PRIMARY_TITLE_SIZE};
     font-weight: ${Pallete.LG_FONT_WEIGHT};
     margin-bottom: ${props => props.$marginBottom}px;
+    text-decoration: none;
     @media ( max-width: 1240px ) {
         font-size: 36px;                
     }
@@ -109,8 +131,8 @@ export const SubTitle = styled.div`
 `;
 
 export const Button = styled.button<{ $primary?:boolean, $close?: boolean }>`
-    width: 143px;
-    height: 42px;
+    width: 203px;
+    height: 52px;
     margin-right: 4px;
     color: #FFFF;
     border: 1px solid #f2f2f2;
@@ -232,4 +254,9 @@ export const SpanError = styled.span`
     margin-left: 20px;
     font-size: ${Pallete.SM_FONT_SIZE};
     color: ${Pallete.RED_COLOR};
+`
+
+export const Label = styled.label`
+    display: flex;
+    flex-direction: column;
 `

@@ -1,10 +1,10 @@
 import { ContactForm } from "@/components/contact/ContactForm";
-import { Container } from "@/styles/global-styles";
+import { Container, GlobalContainer } from "@/styles/global-styles";
 
 export default function contact() {
     return(
-        <Container>
+        <GlobalContainer>
             <ContactForm></ContactForm>
-        </Container>
+        </GlobalContainer>
     )
 }

@@ -17,22 +17,23 @@ export const DescriptionContainer = styled.div`
             text-align: justify                
         }
     }
-
     ul{
         display: flex;
         justify-content: center;
-        width: 70vw;
+        width: 80%;
         gap: 20%;
         list-style: none;
         @media ( max-width: 1240px ) {
             flex-direction: column;
         }
     }
-
     li{
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 4px;
     }
-
     a{
         color: #FFFF;
         text-decoration: none;
