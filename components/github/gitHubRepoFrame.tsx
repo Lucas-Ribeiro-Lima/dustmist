@@ -1,23 +1,17 @@
-import { Container, SecondaryTitle, SubTitle } from "@/styles/global-styles";
+import { GitHubRepoData } from "./gitHubRepo";
+import { Container, SecondaryTitle, SubTitle } from "./gitHubStyle"
 import Link from "next/link";
 
-interface GitHubRepoFrameData{
-    id: number;
-    name: string;
-    description: string;
-    url: string;
-    created: string;
-}
 
-export default function GitHubRepoFrame({id, name, description, url, created}: GitHubRepoFrameData) {
-    return(
-        <Container key={id} $BackgroundContainer="#333">
+export default function GitHubRepoFrame({id, name, description, html_url, created_at }: GitHubRepoData) {
+    return (
+        <Container key={id} $padding={16}>  
             <SecondaryTitle>
-                <Link href={url}>
+                <Link href={html_url}>
                     {name}
                 </Link>
             </SecondaryTitle>
-            <SubTitle>{created}</SubTitle>
+            <SubTitle>{created_at}</SubTitle>
             <Container>
                 {description}
             </Container>

@@ -1,45 +1,62 @@
-import { Container, PrimaryTitle, SecondaryTitle, SubTitle } from "@/styles/global-styles"
+import { Container, PrimaryTitle, SecondaryTitle, SubTitle } from "./gitHubStyle"
 import Link from "next/link";
 import Image from 'next/image'
 
-async function GetGithubUser() {
-
-    const request = await fetch('https://api.github.com/users/Lucas-Ribeiro-Lima');
-    const response = await request.json();
-
-    return response;
-}
-
-type GitHubUserData = {
-    id: number;
+interface GitHubUserData {
     login: string;
     bio: string;
-    url: string;
+    avatar_url: string;
+    html_url: string;
     company: string;
     location: string;
 }
 
-export default async function GithubUser () {
+async function getGithubUser(): Promise<GitHubUserData> {
 
-    const GitUser = await GetGithubUser();
+    const GitToken = process.env.GITHUB_FINE_TOKEN
 
-    return(
-        <Container $BackgroundContainer="#333">
-            <Container $flexRowContainer>
-                <Container>
-                    <PrimaryTitle>
-                        <Link href={GitUser.html_url}>
-                            {GitUser.login}
-                        </Link>
-                    </PrimaryTitle>
+    let cachedGitUser: GitHubUserData
+    
+    if (cachedGitUser == undefined){
+        const request = await fetch('https://api.github.com/users/Lucas-Ribeiro-Lima', {
+            headers: {
+                "Authorization": `token ${GitToken}`,
+            }
+        });
+        const response = await request.json();
+
+        cachedGitUser= response
+
+        return response;
+    }
+
+    else {
+        return cachedGitUser
+    }
+
+}
+
+export default async function GithubUser() {
+
+    const gitUser = await getGithubUser()
+
+    return (
+        <Container>
+            <Container>
+                <PrimaryTitle>
+                    <Link href={gitUser.html_url}>
+                        {gitUser.login}
+                    </Link>
+                </PrimaryTitle>
+                <Container $flexRowContainer $gap={60}>
                     <SecondaryTitle>
-                        {GitUser.bio}
+                        {gitUser.bio}
                     </SecondaryTitle>
+                    <Image src={gitUser.avatar_url} width={150} height={150} alt="GitHub Image"></Image>
                 </Container>
-            <Image src={GitUser.avatar_url} width={200} height={200} alt="GitHub Image"></Image>
             </Container>
             <SecondaryTitle></SecondaryTitle>
-            <SubTitle>{GitUser.company}-{GitUser.location}</SubTitle>
+            <SubTitle>{gitUser.company}-{gitUser.location}</SubTitle>
         </Container>
     )
 }

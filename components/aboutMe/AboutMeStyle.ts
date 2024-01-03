@@ -30,7 +30,7 @@ export const PortraitElipse = styled.div< {$elipse1?:boolean, $elipse2?:boolean}
                 border-radius: 650px;
                 border: 1px solid #202020;
                 background-color: rgba(30, 29, 29, 0.20);               
-                @media ( max-width: 1240px ) {
+                @media ( max-width: 1640px ) {
                     width: 300px;
                     height: 300px;
                 }
@@ -45,7 +45,7 @@ export const PortraitElipse = styled.div< {$elipse1?:boolean, $elipse2?:boolean}
                 border-radius: 596.887px;
                 background-color: #1E1D1D;
                 overflow: hidden;
-                @media ( max-width: 1240px ) {
+                @media ( max-width: 1640px ) {
                     width: 296.89px;
                     height: 296.89px;
                 }

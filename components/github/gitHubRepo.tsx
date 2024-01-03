@@ -1,22 +1,48 @@
+import { Container } from "./gitHubStyle";
 import GitHubRepoFrame from "./gitHubRepoFrame";
 
-async function GetGithubRepo() {
-
-    const request = await fetch('https://api.github.com/users/Lucas-Ribeiro-Lima/repos');
-    const response = await request.json();
-    
-    return response;
+export interface GitHubRepoData {
+    id: number;
+    name: string;
+    description: string;
+    html_url: string;
+    created_at: string;
 }
 
-export default async function GithubRepo () {
+async function getGithubRepo(): Promise<GitHubRepoData[]> {
 
-    const GitUser = await GetGithubRepo();
+    const GitToken = process.env.GITHUB_FINE_TOKEN
 
-    return(
-            <>
-                {GitUser.map(({id, name, description, html_url, created_at}) => {
-                    return(<GitHubRepoFrame key={id} id={id} name={name} description={description} url={html_url} created={created_at}></GitHubRepoFrame>)
-                })}
-            </>
+    let CachedGitRepos: GitHubRepoData[]
+
+    if (CachedGitRepos == undefined) {
+        const request = await fetch('https://api.github.com/users/Lucas-Ribeiro-Lima/repos', {
+            headers: {
+                "Authorization": `token ${GitToken}`,
+            }
+        });
+        const response = await request.json();
+
+        CachedGitRepos = response
+
+        return response;
+    }
+
+    else {
+        return CachedGitRepos
+    }
+
+}
+
+export default async function GithubRepo() {
+
+    const GitRepos = await getGithubRepo();
+
+    return (
+        <Container $flexColContainer $gap={60} $backgroundColor="#171717">
+            {GitRepos.map(({ id, name, description, html_url, created_at }) => {
+                return (<GitHubRepoFrame key={id} id={id} name={name} description={description} html_url={html_url} created_at={created_at}></GitHubRepoFrame>)
+            })}
+        </Container>
     )
 }
