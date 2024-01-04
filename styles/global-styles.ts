@@ -36,7 +36,7 @@ export const Layout = styled.div`
     width: 75%;
     background-color: ${Pallete.BLACK_COLOR};
     border-radius: 32px;
-    box-shadow: 0px 0px 4px ${Pallete.GREEN_COLOR};
+    /* box-shadow: 0px 0px 4px ${Pallete.GREEN_COLOR}; */
     @media ( max-width: 1240px ) {
         width: 100vw;   
         border-radius: 0px;         
@@ -70,7 +70,7 @@ export const ContainerModal = styled.dialog`
     display: flex;
     justify-content: center;
     color: ${Pallete.WHITE_COLOR};
-    box-shadow: 0px 0px 10px ${Pallete.GREEN_COLOR};
+    /* box-shadow: 0px 0px 10px ${Pallete.GREEN_COLOR}; */
     background-color: #333;
     width: 800px;
     height: fit-content;
@@ -149,7 +149,7 @@ export const Button = styled.button<{ $primary?:boolean, $close?: boolean }>`
     ${props =>
         props.$close && css `
         background: ${Pallete.RED_COLOR};
-        color: ${Pallete.BLACK_COLOR};
+        color: ${Pallete.WHITE_COLOR};
         border: none;
         `
     }
