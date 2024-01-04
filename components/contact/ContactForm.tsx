@@ -12,13 +12,13 @@ type ContactFormData = z.infer<typeof ContactFormSchema>
 
 const ContactFormSchema = z.object(
     {
-        name: z.string().min(4, 'Preencha seu nome'),
-        last_name: z.string().min(4, 'Preencha seu sobrenome'),
-        email: z.string().email('Formato de e-mail inválido'),
-        phone: z.string().min(1, 'Preencha seu número de contato'),
-        message: z.string().min(10, 'Escreva uma curta mensagem').max(512, 'Você ultrapassou o limite de 512 caracteres')
+        name: z.string().min(4, 'Please enter your name'),
+        last_name: z.string().min(4, 'Please enter your last name'),
+        email: z.string().email('Invalid email format'),
+        phone: z.string().min(1, 'Please enter your contact number'),
+        message: z.string().min(10, 'Write a brief message').max(512, 'You have exceeded the 512-character limit')
     }
-)
+);
 
 export function ContactForm() {
     
