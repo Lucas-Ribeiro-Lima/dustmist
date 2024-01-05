@@ -7,7 +7,7 @@ import { Container } from "./gitHubStyle";
 export default function GitHubPage() {
     return (
         <Container $flexRowContainer $gap={20} $backgroundColor="#171717" $margin={30}>
-            <Container $height={40} $width={35} $padding={10}>
+            <Container $width={35} $padding={10}>
                 <GithubUser></GithubUser>
             </Container>
             <Container $height={60} $backgroundColor="#171717">

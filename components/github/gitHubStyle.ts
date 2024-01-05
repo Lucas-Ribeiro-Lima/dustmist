@@ -46,6 +46,10 @@ export const Container = styled.div<{
     img {
         border-radius: 100%;
     }
+    @media ( max-width: 1240px ) {
+        flex-direction: column;
+        width: auto;
+    }
 `
 export const PrimaryTitle = styled.h1`
     font-size: 42px;
