@@ -1,18 +1,11 @@
-'use client'
+import { Container, SecondaryTitle } from '@/styles/global-styles'
+import GitHubPage from './gitHubPage'
 
-import GithubRepo from "./gitHubRepo";
-import GithubUser from "./gitHubUser";
-import { Container } from "./gitHubStyle";
-
-export default function GitHub () {
-    return(
-        <Container $flexRowContainer $height={100} $backgroundColor="#171717" $gap={20}>
-            <Container $alignself="start">
-                <GithubUser></GithubUser>
-            </Container>
-            <Container $flexColContainer $height={80} $backgroundColor="#171717" $alignself="start">
-                <GithubRepo></GithubRepo>
-            </Container>
+export default function GitHub() {
+    return (
+        <Container>
+            <SecondaryTitle>Github</SecondaryTitle>
+            <GitHubPage></GitHubPage>
         </Container>
     )
 }

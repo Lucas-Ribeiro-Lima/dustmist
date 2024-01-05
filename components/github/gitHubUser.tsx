@@ -1,62 +1,92 @@
-import { Container, PrimaryTitle, SecondaryTitle, SubTitle } from "./gitHubStyle"
+'use client'
+
+import { Container, PrimaryTitle, SecondaryTitle, SubTitle, UnderlineSpan } from "./gitHubStyle"
 import Link from "next/link";
 import Image from 'next/image'
+import { useEffect, useState } from "react";
+import Loading from "@/app/loading";
+import { ErrorTitle } from "@/styles/global-styles";
+import { GithubIcon } from "lucide-react";
 
 interface GitHubUserData {
-    login: string;
+    name: string;
     bio: string;
     avatar_url: string;
-    html_url: string;
     company: string;
     location: string;
+    html_url: string;
 }
 
 async function getGithubUser(): Promise<GitHubUserData> {
 
     const GitToken = process.env.GITHUB_FINE_TOKEN
 
-    let cachedGitUser: GitHubUserData
-    
-    if (cachedGitUser == undefined){
-        const request = await fetch('https://api.github.com/users/Lucas-Ribeiro-Lima', {
-            headers: {
-                "Authorization": `token ${GitToken}`,
-            }
+    try {
+        const request = await fetch(`https://api.github.com/users/Lucas-Ribeiro-Lima`, {
+            // method: "GET",
+            // headers: {
+            //     "Authorization": `Bearer ${GitToken}`,
+            // }
         });
         const response = await request.json();
-
-        cachedGitUser= response
-
         return response;
     }
-
-    else {
-        return cachedGitUser
+    catch (error) {
+        throw new Error(error);
     }
 
 }
 
-export default async function GithubUser() {
+export default function GithubUser() {
 
-    const gitUser = await getGithubUser()
+    const [gitUser, setGitUser] = useState<GitHubUserData | null>(null)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState<string | null>(null)
 
-    return (
-        <Container>
+    const fetchData = async () => {
+        const response = await getGithubUser()
+        setGitUser(response)
+    }
+
+    useEffect(() => {
+        try {
+            fetchData()
+        }
+        catch (error) {
+            console.error(`Erro na chama assíncrona: ${error.message}`)
+            setError("Ocorreu um erro ao obter os dados do usuário.");
+        }
+        finally {
+            setLoading(false)
+        }
+    }, [])
+
+    if (loading) return (
+        <Loading></Loading>
+    )
+
+    if (error) return (
+        <ErrorTitle>
+            {error}
+        </ErrorTitle>
+    )
+
+    if (gitUser) return (
+        <Container $flexRowContainer>
+            <Image src={gitUser.avatar_url} width={150} height={150} alt="GitHub Image"></Image>
             <Container>
-                <PrimaryTitle>
-                    <Link href={gitUser.html_url}>
-                        {gitUser.login}
-                    </Link>
-                </PrimaryTitle>
-                <Container $flexRowContainer $gap={60}>
-                    <SecondaryTitle>
-                        {gitUser.bio}
-                    </SecondaryTitle>
-                    <Image src={gitUser.avatar_url} width={150} height={150} alt="GitHub Image"></Image>
+                <Link href={gitUser.html_url}>
+                    <PrimaryTitle>
+                        {gitUser.name}
+                        <GithubIcon width={50} height={50}></GithubIcon>
+                    </PrimaryTitle>
+                </Link>
+                <Container $padding={30}>
+                    {gitUser.bio}
+                    <br></br>
+                    <SubTitle>{gitUser.company}-{gitUser.location}</SubTitle>
                 </Container>
             </Container>
-            <SecondaryTitle></SecondaryTitle>
-            <SubTitle>{gitUser.company}-{gitUser.location}</SubTitle>
         </Container>
     )
 }

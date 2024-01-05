@@ -1,20 +1,23 @@
 import { GitHubRepoData } from "./gitHubRepo";
-import { Container, SecondaryTitle, SubTitle } from "./gitHubStyle"
+import { Container, LanguageSpan, SecondaryTitle, SubTitle, UnderlineSpan } from "./gitHubStyle"
 import Link from "next/link";
 
 
-export default function GitHubRepoFrame({id, name, description, html_url, created_at }: GitHubRepoData) {
+export default function GitHubRepoFrame({ id, name, description, html_url, created_at, language }: GitHubRepoData) {
+
+    const str_name = String(name).toUpperCase()
+
     return (
-        <Container key={id} $padding={16}>  
+        <Container key={id} $width={90} $padding={20}>
             <SecondaryTitle>
-                <Link href={html_url}>
-                    {name}
-                </Link>
+                <Link href={html_url}>{str_name}</Link>
             </SecondaryTitle>
-            <SubTitle>{created_at}</SubTitle>
-            <Container>
+            <LanguageSpan>
+                {language}
+            </LanguageSpan>
+            <div>
                 {description}
-            </Container>
+            </div>
         </Container>
     )
 }

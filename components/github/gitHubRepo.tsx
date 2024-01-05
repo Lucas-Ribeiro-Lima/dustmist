@@ -1,4 +1,9 @@
+'use client'
+
+import { useEffect, useState } from "react";
+import { ErrorTitle } from "@/styles/global-styles";
 import { Container } from "./gitHubStyle";
+import Loading from "@/app/loading";
 import GitHubRepoFrame from "./gitHubRepoFrame";
 
 export interface GitHubRepoData {
@@ -7,41 +12,60 @@ export interface GitHubRepoData {
     description: string;
     html_url: string;
     created_at: string;
+    language: string;
 }
 
 async function getGithubRepo(): Promise<GitHubRepoData[]> {
 
-    const GitToken = process.env.GITHUB_FINE_TOKEN
+    const gitToken = process.env.GITHUB_FINE_TOKEN
 
-    let CachedGitRepos: GitHubRepoData[]
-
-    if (CachedGitRepos == undefined) {
+    try {
         const request = await fetch('https://api.github.com/users/Lucas-Ribeiro-Lima/repos', {
-            headers: {
-                "Authorization": `token ${GitToken}`,
-            }
+            // headers: {
+            //     "Authorization":`Bearer ${gitToken}`,
+            // }
         });
         const response = await request.json();
 
-        CachedGitRepos = response
-
         return response;
     }
-
-    else {
-        return CachedGitRepos
+    catch (error) {
+        throw new Error(error);
     }
-
 }
 
-export default async function GithubRepo() {
+export default function GithubRepo() {
 
-    const GitRepos = await getGithubRepo();
+    const [ gitRepos, setGitRepos ] = useState<GitHubRepoData[]>([]);    
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState<string | null>(null)
 
-    return (
-        <Container $flexColContainer $gap={60} $backgroundColor="#171717">
-            {GitRepos.map(({ id, name, description, html_url, created_at }) => {
-                return (<GitHubRepoFrame key={id} id={id} name={name} description={description} html_url={html_url} created_at={created_at}></GitHubRepoFrame>)
+    const fetchData = async () => {
+        const response = await getGithubRepo()
+        setGitRepos(response)
+    };
+
+    useEffect(() => {
+        try{
+            fetchData();
+        }
+        catch(error){
+            console.error(`Erro na chama assíncrona: ${error.message}`)
+            setError("Ocorreu um erro ao obter os repositórios do usuário.");
+        }
+        finally{
+            setLoading(false)
+        }
+    }, [])
+
+    if (loading) return (<Loading></Loading>)
+
+    if (error) return(<ErrorTitle>{error}</ErrorTitle>)
+
+    if(gitRepos) return (
+        <Container $flexColContainer $gap={30} $backgroundColor="#171717">
+            {gitRepos.map(({ id, name, description, html_url, created_at, language }) => {
+                return (<GitHubRepoFrame key={id} id={id} name={name} description={description} html_url={html_url} created_at={created_at} language={language}></GitHubRepoFrame>)
             })}
         </Container>
     )
