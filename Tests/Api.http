@@ -1,0 +1,5 @@
+### POST MongoDB contacts
+POST http://localhost:3000/api/contact
+
+### GET MongoDB contacts
+GET http://localhost:3000/api/contact

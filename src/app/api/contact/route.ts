@@ -21,6 +21,36 @@ async function ConnectToDatabase(uri: string, database: string) {
         throw new Error(`Error connecting to the database: ${error.message}`);
     }
 }
+interface ContactObject {
+    id: string,
+    name: string,
+    last_name: string,
+    email: string,
+    phone: string,
+    message: string,
+    dataContact: Date,
+}
+
+export async function GET() {
+
+    try {
+        const db = await ConnectToDatabase(process.env.MONGODB_URI, process.env.MONGODB_DB)
+        const collection = db.collection<ContactObject>('contacts');
+
+        const findContacts = await collection.find({})
+        const response: ContactObject[] = []
+
+        for await (const document of findContacts) {
+            response.push(document) 
+        }
+
+        return NextResponse.json(response);
+
+    } catch (error) {
+        throw new Error(`Error fetching data from database: ${error.message}`)
+    }
+
+}
 
 export async function POST(req: Request, res: Response) {
 
