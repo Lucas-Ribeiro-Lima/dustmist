@@ -140,6 +140,9 @@ export const Button = styled.button<{ $primary?:boolean, $close?: boolean }>`
     border-radius: 24px;
     font-weight: ${Pallete.LG_FONT_WEIGHT};
     cursor: pointer;
+    &:hover{
+        background: ${Pallete.WHITE_GREEN_COLOR};
+    }
     ${props =>
         props.$primary && css`
         background: ${Pallete.GREEN_COLOR};
@@ -183,6 +186,9 @@ export const BigButton = styled.button`
     font-weight: ${Pallete.LG_FONT_WEIGHT};
     background: ${Pallete.GREEN_COLOR};
     cursor: pointer;
+    &:hover{
+        background: ${Pallete.WHITE_GREEN_COLOR};
+    }
     a{
         text-decoration: none;
         color: ${Pallete.WHITE_COLOR};
