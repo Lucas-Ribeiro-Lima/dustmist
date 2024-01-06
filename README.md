@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Project - Next.js 🚀
 
-## Getting Started
+This is the repository for my portfolio project developed in Next.js. The project uses TypeScript, Styled Components, React Hook Form, Zod for validation, consumes the GitHub API to list users and repositories, and utilizes Next.js API Routes to simulate authentication and communicate with a MongoDB database. Deployment is done in a Docker container.
 
-First, run the development server:
+## Environment Configurations 🛠️
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Make sure to set the following environment variables before running the project:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### MongoDB Database 📊
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `MONGODB_URI`: MongoDB connection URL in the format `mongodb://user:password@host:port/?maxPoolSize=20&w=majority`
+- `MONGODB_HOST`: MongoDB host
+- `MONGODB_PORT`: MongoDB port
+- `MONGODB_USER`: MongoDB user
+- `MONGODB_PASSWORD`: MongoDB password
+- `MONGODB_DB`: MongoDB database name
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### GitHub 🌐
 
-## Learn More
+- `GITHUB_FINE_TOKEN`: Access token for GitHub API authentication
 
-To learn more about Next.js, take a look at the following resources:
+### Admin Credentials 👤
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `ADMIN_USERNAME`: Administrator's username
+- `ADMIN_AVATAR_URL`: Administrator's avatar URL
+- `ADMIN_EMAIL`: Administrator's email
+- `ADMIN_PASSW`: Administrator's password
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Key Features 🚀
 
-## Deploy on Vercel
+- **User and Repository Listing**: The project consumes the GitHub API to list users and repositories.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Simulated Authentication and Database Communication**: Next.js API Routes are used to simulate authentication and interaction with MongoDB.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Technologies Used 🛠️
+
+- **Next.js**: React framework for server-side rendering and static page generation.
+- **TypeScript**: Adds static typing to JavaScript, providing a more secure codebase.
+- **Styled Components**: Freedom in styling with the ability to use JavaScript to define styles.
+- **React Hook Form**: Facilitates form creation in React.
+- **Zod**: Library for data validation in TypeScript.
+- **MongoDB**: NoSQL database used for data storage.
+
+## Docker Deployment 🐳
+
+The project has been built and deployed in a Docker container.
+
+Access the project at [http://localhost:3000](http://localhost:3000).
+
+If you have any questions or suggestions, feel free to contribute or get in touch. 📬
