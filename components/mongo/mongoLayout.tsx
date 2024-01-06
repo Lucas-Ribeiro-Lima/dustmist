@@ -1,4 +1,5 @@
 'use client'
+
 import { useEffect, useState } from "react";
 import { Container, Title } from "./styles";
 import axios from "axios";
@@ -16,7 +17,7 @@ export type ContactData = {
     dataContact?: Date,
 }
 
-export async function MongoLayout() {
+export function MongoLayout() {
 
     const [data, setData] = useState<ContactData[]>()
     const [status, setStatus] = useState(400)
@@ -37,7 +38,7 @@ export async function MongoLayout() {
     
     return(
         <Container>
-            <Title>Contacts - Documents</Title>
+            <Title>Contacts Documents</Title>
             {data.map(({id, name, last_name, email, phone, message}, index) => {
                 return <MongoFrame key={index} id={id} name={name} last_name={last_name} email={email} phone={phone} message={message}></MongoFrame>
             })}

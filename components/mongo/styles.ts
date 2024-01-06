@@ -6,11 +6,13 @@ import * as Pallete from '@/styles/variables'
 export const Title = styled.h1`
     font-size: ${Pallete.SECONDARY_TITLE_SIZE};
     color: ${Pallete.GREEN_COLOR};
+    text-align: center;
 `
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
+    justify-items: center;
     align-items: center;
     gap: 20px;
     width: 100%;
