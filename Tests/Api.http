@@ -3,3 +3,12 @@ POST http://localhost:3000/api/contact
 
 ### GET MongoDB contacts
 GET http://localhost:3000/api/contact
+
+### POST login credencial test
+POST http://localhost:3000/api/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "lucasribeirolima974@gmail.com",
+  "password": "123456"
+}
