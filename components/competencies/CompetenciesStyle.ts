@@ -2,7 +2,6 @@
 
 import styled from "styled-components"
 
-
 export const CompentenciesContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -25,6 +24,14 @@ export const Competencie = styled.div`
     font-size: 36px;
     font-weight: 600;
     color: #535353;
+    cursor: pointer;
+    &:hover{
+        background-color: #2c2c2c;
+        color: #FFFF;
+        & span {
+            background: #4aDF89;
+        }
+    }
     img {
         padding-left: 50px;
         padding-top: 34px;
@@ -75,4 +82,11 @@ export const SkillsContainer = styled.div`
 export const Skills = styled.div`
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+    &:hover{
+        color: #FFFF;
+        & span {
+            color: #4aDF89;
+        }
+    }
 `

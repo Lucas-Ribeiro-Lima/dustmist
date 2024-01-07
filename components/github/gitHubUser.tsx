@@ -72,7 +72,7 @@ export default function GithubUser() {
     )
 
     if (gitUser) return (
-        <Container $flexRowContainer>
+        <Container $flexRowContainer $padding={10}>
             <Image src={gitUser.avatar_url} width={150} height={150} alt="GitHub Image"></Image>
             <Container>
                 <Link href={gitUser.html_url}>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ErrorTitle } from "@/styles/global-styles";
-import { Container } from "./gitHubStyle";
+import { Container, UnderlineSpan } from "./gitHubStyle";
 import Loading from "@/app/loading";
 import GitHubRepoFrame from "./gitHubRepoFrame";
 

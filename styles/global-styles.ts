@@ -26,7 +26,7 @@ export const GlobalContainer = styled.div`
     ::selection{
         background-color: #27AE60;
         color: #FFFF;
-    }  
+    }
     @media ( max-width: 1240px ) {
         padding: 0px;            
     }

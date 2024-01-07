@@ -10,6 +10,7 @@ export const Container = styled.div<{
     $padding?: number,
     $margin?: number,
     $backgroundColor?: string,
+    $hover?: boolean,
 }>`
     /* display: flex; */
     /* flex-direction: column; */
@@ -80,11 +81,10 @@ export const LanguageSpan = styled.span`
 `
 
 export const UnderlineSpan = styled.span`
-    /* display: none; */
+    display: block;
     width: 100%;
     height: 5px;
     background: #27AE60;
-
 `
 
 
