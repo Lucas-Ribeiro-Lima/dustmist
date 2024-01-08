@@ -12,8 +12,6 @@
 # testing
 /coverage
 
-# Testes
-/Tests
 
 # next.js
 /.next/
