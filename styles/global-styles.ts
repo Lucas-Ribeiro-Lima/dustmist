@@ -55,7 +55,7 @@ export const Container = styled.div<{$flexRowContainer?:boolean, $BackgroundCont
         css`
             flex-direction: row; 
             gap: 20px; 
-            align-items: start;
+            align-items: center;
             @media ( max-width: 1240px ) {
                 flex-direction: column;             
              }
@@ -154,6 +154,9 @@ export const Button = styled.button<{ $primary?:boolean, $close?: boolean }>`
         background: ${Pallete.RED_COLOR};
         color: ${Pallete.WHITE_COLOR};
         border: none;
+        &:hover {
+            background: ${Pallete.WHITE_RED_COLOR};
+        }
         `
     }
     a{
