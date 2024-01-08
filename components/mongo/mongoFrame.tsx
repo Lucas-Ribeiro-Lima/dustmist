@@ -1,7 +1,7 @@
 import { ContactData } from "./mongoLayout"
 import { ContainerFrame, Field, FieldSpan } from "./styles"
 
-export function MongoFrame({ id, name, last_name, email, phone, message }: ContactData) {
+export function MongoFrame({name, last_name, email, phone, message }: ContactData) {
     return (
         <ContainerFrame>
             <Field>

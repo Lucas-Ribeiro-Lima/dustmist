@@ -1,5 +1,5 @@
 import { MongoClient, Db } from 'mongodb'
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 let cachedDB: Db = null;
 
@@ -31,25 +31,29 @@ interface ContactObject {
     dataContact: Date,
 }
 
-export async function GET() {
-
+export async function GET(request: NextRequest) {
     try {
-        const db = await ConnectToDatabase(process.env.MONGODB_URI, process.env.MONGODB_DB)
-        const collection = db.collection<ContactObject>('contacts');
+        const secret = request.headers.get("Authorization")
 
-        const findContacts = await collection.find({})
-        const response: ContactObject[] = []
-
-        for await (const document of findContacts) {
-            response.push(document) 
+        if (secret ===  `Bearer ${process.env.ADMIN_SECRET}`){
+            const db = await ConnectToDatabase(process.env.MONGODB_URI, process.env.MONGODB_DB)
+            const collection = db.collection<ContactObject>('contacts');
+    
+            const findContacts = await collection.find({})
+            const response: ContactObject[] = []
+    
+            for await (const document of findContacts) {
+                response.push(document) 
+            }
+    
+            return NextResponse.json(response);
         }
-
-        return NextResponse.json(response);
-
+        else {
+            return NextResponse.json({message: "Unauthorized user"}, {status: 401, statusText:"Unauthorized user"})
+        }
     } catch (error) {
         throw new Error(`Error fetching data from database: ${error.message}`)
     }
-
 }
 
 export async function POST(req: Request) {
@@ -70,7 +74,7 @@ export async function POST(req: Request) {
             dataContact: new Date(),
         })
 
-        return NextResponse.json("Submit Form Sucess");
+        return NextResponse.json({message: "Submit Form Sucess"});
 
     }
 

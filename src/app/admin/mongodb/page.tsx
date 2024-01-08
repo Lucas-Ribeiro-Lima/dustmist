@@ -1,7 +1,10 @@
+import { AuthProvider } from "@/components/contexts/authContext"
 import { MongoLayout } from "@/components/mongo/mongoLayout"
 
 export default function Home() {
     return (
-        <MongoLayout></MongoLayout>
+        <AuthProvider>
+            <MongoLayout></MongoLayout>
+        </AuthProvider>
     )
 }

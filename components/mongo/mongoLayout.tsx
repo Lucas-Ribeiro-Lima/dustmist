@@ -1,14 +1,16 @@
 'use client'
 
-import { useEffect, useState } from "react";
-import { Container, Title } from "./styles";
-import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import Loading from "@/app/loading";
 import { MongoFrame } from "./mongoFrame";
 import { ErrorMSG } from "../error/Error";
+import { Container, Title } from "./styles";
+import { AuthContext } from "../contexts/authContext";
+import { api } from "@/lib/api";
+
 
 export type ContactData = {
-    id: string,
+    _id?: number,
     name: string,
     last_name: string,
     email: string,
@@ -18,29 +20,43 @@ export type ContactData = {
 }
 
 export function MongoLayout() {
+    const { user } = useContext(AuthContext)
 
     const [data, setData] = useState<ContactData[]>()
-    const [status, setStatus] = useState(400)
+    const [status, setStatus] = useState<number>()
 
     useEffect(() => {
         async function fetchData() {
-            const { data, status }= await axios.get('/api/contact')
-            setData(data)
-            setStatus(status)
+            try {
+                const { data, status } = await api.get<ContactData[]>('/api/contact')
+                setStatus(status)
+                setData(data)
+            } catch (error) {
+                setStatus(error.response.status)
+            }
         }
         fetchData()
     }, [])
-
-    if (!data) return <Loading></Loading>
-
-    if (status !== 200) return <ErrorMSG></ErrorMSG>
-    // const data:ContactData[] = await axios.get('/api/contact')
     
-    return(
+    //Verify the data, if there is data the user is authenticated
+    if (!data) {
+        if (status === 400) {
+            return <Container><ErrorMSG>Error in request parameters!</ErrorMSG></Container>;
+        } else if (status === 401) {
+            return <Container><ErrorMSG>User not authorized!</ErrorMSG></Container>
+        } else {
+            return <Container><Loading></Loading></Container>;
+        }
+    }
+
+    if (!user) return <Loading></Loading>
+      
+    return (
         <Container>
+            <Title>Bem vindo {user.name}</Title>
             <Title>Contacts Documents</Title>
-            {data.map(({id, name, last_name, email, phone, message}, index) => {
-                return <MongoFrame key={index} id={id} name={name} last_name={last_name} email={email} phone={phone} message={message}></MongoFrame>
+            {data.map(({ _id, name, last_name, email, phone, message }, index) => {
+                return <MongoFrame key={_id} name={name} last_name={last_name} email={email} phone={phone} message={message}></MongoFrame>
             })}
         </Container>
     )
