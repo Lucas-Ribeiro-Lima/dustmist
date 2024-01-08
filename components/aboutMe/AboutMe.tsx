@@ -2,6 +2,9 @@ import { Button, Container, PrimaryTitle, SubTitle } from "@/styles/global-style
 import { AboutMeContainer, PortraitElipse } from "./AboutMeStyle";
 import Image from "next/image";
 import Link from "next/link";
+import { DownloadButton } from "./DonwloadButton";
+
+const CurriculumURL = process.env.CURRICULUM_URL
 
 export const AboutMe = () => {
     return (
@@ -13,9 +16,7 @@ export const AboutMe = () => {
                 </PrimaryTitle>
                 <SubTitle>Frontend Developer</SubTitle>
                 <Container $flexRowContainer>
-                    <Button $primary>
-                        <a href='/LucasCV.pdf' download='/LucasCV.pdf'>Download CV</a>
-                    </Button>
+                    <DownloadButton url={CurriculumURL}></DownloadButton>
                     <Button>
                         <Link href="/#">Learn More</Link>
                     </Button>
