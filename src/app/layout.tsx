@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { GlobalStyle, GlobalContainer, Layout } from '@/styles/global-styles'
 import StyledComponentsRegistry from '../../lib/registry'
 import React from 'react'
+import { AuthProvider } from '@/components/contexts/authContext'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -27,13 +28,15 @@ export default function RootLayout(props: {
       <body className={inter.className}>
         <GlobalStyle />
         <StyledComponentsRegistry>
-          <GlobalContainer>
-            <Layout>
-              {props.children}
-              {props.modal}
-              <div id='modal-root'></div>
-            </Layout>
-          </GlobalContainer>
+          <AuthProvider>
+            <GlobalContainer>
+              <Layout>
+                {props.children}
+                {props.modal}
+                <div id='modal-root'></div>
+              </Layout>
+            </GlobalContainer>
+          </AuthProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
