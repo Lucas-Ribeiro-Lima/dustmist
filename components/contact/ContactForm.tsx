@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useRouter } from 'next/navigation'
-import axios from 'axios'
+import { api } from '@/lib/api'
 
 type ContactFormData = z.infer<typeof ContactFormSchema>
 
@@ -21,28 +21,24 @@ const ContactFormSchema = z.object(
 );
 
 export function ContactForm() {
-    
+
     const { register, handleSubmit, formState: { errors } } = useForm<ContactFormData>({ resolver: zodResolver(ContactFormSchema) });
-    
+
     const router = useRouter();
 
     async function handleForm({ name, last_name, email, phone, message }: ContactFormData, event: FormEvent) {
         event.preventDefault();
-    
-        await axios
-            .post("/api/contact", { name, last_name, email, phone, message })
-            .then((res) => {
-                console.log({ res });
-                router.push('/sucess');
-            })
-            .catch((error) => {
-                console.error(error.message);
-                router.push('/error')
-                // throw new Error("Error on form submit")
-            })
 
-}
-    
+        try {
+            const response = api.post("/api/contact", { name, last_name, email, phone, message })
+            console.log(response)
+            router.push('/sucess')
+        } catch (error) {
+            console.error(error.message);
+            router.push('/error')
+        }
+    }
+
     return (
         <Container id='Contact'>
             <SecondaryTitle>
