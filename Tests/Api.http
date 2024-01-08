@@ -4,11 +4,23 @@ POST http://localhost:3000/api/contact
 ### GET MongoDB contacts
 GET http://localhost:3000/api/contact
 
-### POST login credencial test
+### GET Recover user 
+GET http://localhost:3000/api/login 
+Authorization: Bearer TOKEN
+
+### POST login credencial
 POST http://localhost:3000/api/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "lucasribeirolima974@gmail.com",
+  "email": "EMAIL",
   "password": "123456"
 }
+
+### GET Github User
+GET https://api.github.com/users/Lucas-Ribeiro-Lima
+Authorization: Bearer GIT_TOKEN
+
+### GET Github Repo
+GET https://api.github.com/users/Lucas-Ribeiro-Lima/rep
+Authorization: Bearer GIT_TOKEN
