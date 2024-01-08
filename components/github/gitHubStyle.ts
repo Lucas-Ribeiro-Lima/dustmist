@@ -1,3 +1,5 @@
+'use client'
+
 import styled, { css } from "styled-components"
 
 export const Container = styled.div<{
@@ -60,12 +62,18 @@ export const PrimaryTitle = styled.h1`
     align-items: center;
     gap: 20px;
     color: #27ae60;
+    &:hover {
+            color: #4ADF89;
+    }
 `
 
 export const SecondaryTitle = styled.h2`
     width: fit-content;
     a{
         color: #27AE60;
+        &:hover {
+            color: #4ADF89;
+        }
     }
 `
 

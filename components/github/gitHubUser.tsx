@@ -1,12 +1,13 @@
 'use client'
 
-import { Container, PrimaryTitle, SecondaryTitle, SubTitle, UnderlineSpan } from "./gitHubStyle"
+import { useEffect, useState } from "react";
+import { GithubIcon } from "lucide-react";
 import Link from "next/link";
 import Image from 'next/image'
-import { useEffect, useState } from "react";
-import Loading from "@/app/loading";
+import { Container, PrimaryTitle, SubTitle } from "./gitHubStyle"
 import { ErrorTitle } from "@/styles/global-styles";
-import { GithubIcon } from "lucide-react";
+import Loading from "@/app/loading";
+import { api } from '@/lib/api'
 
 interface GitHubUserData {
     name: string;
@@ -20,16 +21,10 @@ interface GitHubUserData {
 async function getGithubUser(): Promise<GitHubUserData> {
 
     const GitToken = process.env.GITHUB_FINE_TOKEN
-
     try {
-        const request = await fetch(`https://api.github.com/users/Lucas-Ribeiro-Lima`, {
-            // method: "GET",
-            // headers: {
-            //     "Authorization": `Bearer ${GitToken}`,
-            // }
-        });
-        const response = await request.json();
-        return response;
+        const { data } = await api.get<GitHubUserData>(`https://api.github.com/users/Lucas-Ribeiro-Lima`, 
+        {headers: {Authorization: GitToken}})
+        return data;
     }
     catch (error) {
         throw new Error(error);

@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { ErrorTitle } from "@/styles/global-styles";
-import { Container, UnderlineSpan } from "./gitHubStyle";
+import { Container } from "./gitHubStyle";
 import Loading from "@/app/loading";
 import GitHubRepoFrame from "./gitHubRepoFrame";
-
+import { api } from '@/lib/api'
 export interface GitHubRepoData {
     id: number;
     name: string;
@@ -16,18 +16,12 @@ export interface GitHubRepoData {
 }
 
 async function getGithubRepo(): Promise<GitHubRepoData[]> {
-
-    const gitToken = process.env.GITHUB_FINE_TOKEN
-
+    const GitToken = process.env.GITHUB_FINE_TOKEN
     try {
-        const request = await fetch('https://api.github.com/users/Lucas-Ribeiro-Lima/repos', {
-            // headers: {
-            //     "Authorization":`Bearer ${gitToken}`,
-            // }
-        });
-        const response = await request.json();
-
-        return response;
+        const { data } = await api
+            .get<GitHubRepoData[]>(`https://api.github.com/users/Lucas-Ribeiro-Lima/repos`,
+                { headers: { Authorization: GitToken } })
+        return data;
     }
     catch (error) {
         throw new Error(error);
@@ -36,7 +30,7 @@ async function getGithubRepo(): Promise<GitHubRepoData[]> {
 
 export default function GithubRepo() {
 
-    const [ gitRepos, setGitRepos ] = useState<GitHubRepoData[]>([]);    
+    const [gitRepos, setGitRepos] = useState<GitHubRepoData[]>([]);
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
@@ -46,23 +40,23 @@ export default function GithubRepo() {
     };
 
     useEffect(() => {
-        try{
+        try {
             fetchData();
         }
-        catch(error){
+        catch (error) {
             console.error(`Erro na chama assíncrona: ${error.message}`)
             setError("Ocorreu um erro ao obter os repositórios do usuário.");
         }
-        finally{
+        finally {
             setLoading(false)
         }
     }, [])
 
     if (loading) return (<Loading></Loading>)
 
-    if (error) return(<ErrorTitle>{error}</ErrorTitle>)
+    if (error) return (<ErrorTitle>{error}</ErrorTitle>)
 
-    if(gitRepos) return (
+    if (gitRepos) return (
         <Container $flexColContainer $gap={30} $backgroundColor="#171717">
             {gitRepos.map(({ id, name, description, html_url, created_at, language }) => {
                 return (<GitHubRepoFrame key={id} id={id} name={name} description={description} html_url={html_url} created_at={created_at} language={language}></GitHubRepoFrame>)

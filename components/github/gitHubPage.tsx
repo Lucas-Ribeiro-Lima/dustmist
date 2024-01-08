@@ -1,5 +1,3 @@
-'use client'
-
 import GithubRepo from "./gitHubRepo";
 import GithubUser from "./gitHubUser";
 import { Container, UnderlineSpan } from "./gitHubStyle";
