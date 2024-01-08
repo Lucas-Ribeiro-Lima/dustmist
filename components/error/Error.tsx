@@ -1,9 +1,11 @@
-import { ErrorTitle } from "@/styles/global-styles";
+import { Container, ErrorTitle } from "@/styles/global-styles";
 
-export function ErrorMSG () {
-    return(
-        <ErrorTitle>
-            Error...
-        </ErrorTitle>
+export function ErrorMSG({ children }) {
+    return (
+        <Container>
+            <ErrorTitle>
+                {children}
+            </ErrorTitle>
+        </Container>
     )
 }

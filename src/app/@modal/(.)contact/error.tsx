@@ -6,7 +6,7 @@ import { Modal } from "@/components/modal/Modal";
 export default function Error() {
     return(
         <Modal>
-            <ErrorMSG></ErrorMSG>
+            <ErrorMSG>Error...</ErrorMSG>
         </Modal>
     )
 }

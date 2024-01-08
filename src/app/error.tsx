@@ -6,7 +6,7 @@ import { Container } from "@/styles/global-styles";
 export default function Error () {
     return(
         <Container>
-            <ErrorMSG></ErrorMSG>
+            <ErrorMSG>Error...</ErrorMSG>
         </Container>
     )
 }

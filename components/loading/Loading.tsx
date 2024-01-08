@@ -1,9 +1,11 @@
-import { LoadingTitle } from "@/styles/global-styles";
+import { Container, LoadingTitle } from "@/styles/global-styles";
 
-export function LoadingMSG  () {
+export function LoadingMSG() {
     return (
-        <LoadingTitle>
-            Loading...
-        </LoadingTitle>
+        <Container>
+            <LoadingTitle>
+                Loading...
+            </LoadingTitle>
+        </Container>
     )
 }
