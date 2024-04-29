@@ -52,6 +52,15 @@ Make sure to set the following environment variables before running the project:
 ### Github API Consume
 ![GitHub API Consume](./public/github-api-consume.png)
 
+### Contact Me!
+![Contact me modal](./public/contact-me-example.png)
+
+### Admin login page
+![Admin login page](./public/admin-login-page.png)
+
+### MongoDB find query
+![Mongodb find query](./public/mongodb-find.png)
+
 ## Docker Deployment 🐳
 
 The project has been built and deployed in a Docker container.
