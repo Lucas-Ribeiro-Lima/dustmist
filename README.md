@@ -41,6 +41,17 @@ Make sure to set the following environment variables before running the project:
 - **Zod**: Library for data validation in TypeScript.
 - **MongoDB**: NoSQL database used for data storage.
 
+## Illustration 🎨
+
+### Apresentation
+![Apresentation](./public/image1.png)
+
+### About me!
+![About me!](./public/image2.png)
+
+### Github API Consume
+![GitHub API Consume](./public/github-api-consume.png)
+
 ## Docker Deployment 🐳
 
 The project has been built and deployed in a Docker container.
